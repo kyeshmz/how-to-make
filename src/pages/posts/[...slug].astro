@@ -1,9 +1,9 @@
 ---
-import { getCollection } from "astro:content";
-import BaseLayout from "@layouts/BaseLayout.astro";
-import RelatedPostsCard from "@components/RelatedPostsCard.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import OptimizedCover from "@components/OptimizedPicture.astro";
+import RelatedPostsCard from "@components/RelatedPostsCard.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -19,36 +19,36 @@ const { Content } = await post.render();
 
 <BaseLayout title={post.data.title} description={post.data.description}>
   <main>
-    <article class="prose mx-auto dark:prose-invert">
-        <div class="prose-h1 text-center">
-          <h1>{post.data.title}</h1>
-        </div>
-        <div>
-          {
-            post.data.cover && (
-              <OptimizedCover src={post.data.cover} alt={post.data.coverAlt} />
-            )
-          }
-        </div>
-        <div>
-          <Content />
-        </div>
-        <div class="prose-a:no-underline">
-          {
-            post.data.tags.map((tag) => (
-              <span class="mb-2 mr-2 inline-block rounded-full bg-neutral-200 px-3 py-1 text-sm hover:bg-neutral-500 dark:bg-neutral-600">
-                <a href={`/tags/${tag}/1/`}>{tag}</a>
-              </span>
-            ))
-          }
-        </div>
-        <div class="flex justify-between">
-          <small
-            >Publish on <FormattedDate date={post.data.pubDate} />，Update on <FormattedDate
-              date={new Date().toISOString()}
-            /></small
-          >
-        </div>
+    <article class="prose mx-auto my-16 dark:prose-invert">
+      <div class="prose-h1 text-center">
+        <h1>{post.data.title}</h1>
+      </div>
+      <div>
+        {
+          post.data.cover && (
+            <OptimizedCover src={post.data.cover} alt={post.data.coverAlt} />
+          )
+        }
+      </div>
+      <div>
+        <Content />
+      </div>
+      <div class="prose-a:no-underline">
+        {
+          post.data.tags.map((tag) => (
+            <span class="mb-2 mr-2 inline-block rounded-full bg-neutral-200 px-3 py-1 text-sm hover:bg-neutral-500 dark:bg-neutral-600">
+              <a href={`/tags/${tag}/1/`}>{tag}</a>
+            </span>
+          ))
+        }
+      </div>
+      <div class="flex justify-between">
+        <small
+          >Publish on <FormattedDate date={post.data.pubDate} />，Update on <FormattedDate
+            date={new Date().toISOString()}
+          /></small
+        >
+      </div>
     </article>
     <div class="mt-4">
       <RelatedPostsCard
