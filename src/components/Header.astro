@@ -5,7 +5,7 @@ import { Icon } from "astro-icon/components";
 
 <header class="z-50 flex w-full flex-wrap py-7 md:flex-nowrap md:justify-start">
   <nav
-    class="relative mx-auto flex w-full max-w-7xl basis-full flex-wrap items-center px-4 md:grid md:grid-cols-12"
+    class="relative mx-auto flex w-full max-w-7xl basis-full flex-wrap items-center px-4"
     aria-label="Global"
   >
     <div class="md:col-span-3">
@@ -21,14 +21,6 @@ import { Icon } from "astro-icon/components";
     <div
       class="ms-auto flex items-center gap-x-2 py-1 md:order-3 md:col-span-3 md:ps-6"
     >
-      <button
-        type="button"
-        class="inline-flex items-center gap-x-2 rounded-xl border border-transparent px-3 py-2 text-sm font-medium text-black transition hover:bg-neutral-100 disabled:pointer-events-none disabled:opacity-50 dark:text-white dark:hover:bg-neutral-700"
-        onclick="window.location.href='/search/'"
-      >
-        <Icon name="tabler:search" class="icon-base" />
-      </button>
-
       <button
         type="button"
         class="hs-dark-mode inline-flex items-center gap-x-2 rounded-full px-3 py-2 text-sm text-black hover:bg-white/20 hs-dark-mode-active:hidden"
