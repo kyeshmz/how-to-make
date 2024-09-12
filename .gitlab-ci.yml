@@ -6,6 +6,7 @@ job:
     - git reset --hard origin/main
     - git pull
     - wget -qO- https://get.pnpm.io/install.sh | sh -
+    - source /home/gitlab-runner/.bashrc
     - pnpm ci
     - pnpm run build
     - cp -rf /var/www/classes/863.24/people/KyeShimizu/public/* /var/www/classes/863.24/people/KyeShimizu/public/
