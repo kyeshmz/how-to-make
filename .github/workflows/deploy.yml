@@ -27,6 +27,9 @@ jobs:
       - name: Build Astro site
         run: npm run build
 
+      - name: Copy gitlab-ci.yml
+        run: cp .gitlab-ci.yml public/
+
       # Push the public directory contents to GitLab repository
       - name: Deploy public folder to GitLab
         run: |
