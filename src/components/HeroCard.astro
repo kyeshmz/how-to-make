@@ -33,10 +33,7 @@ const truncatedDescription = truncateUTF8String(post.data.description, 150);
 <div
   class="relative overflow-hidden rounded-xl border bg-white transition-transform duration-500 hover:-translate-y-1 hover:scale-105 dark:border-neutral-600 dark:bg-neutral-900 md:flex md:flex-row"
 >
-  <a
-    href={new URL(`/posts/${post.slug}/`, Astro.url)}
-    class="block md:flex md:flex-1"
-  >
+  <a href={`./posts/${post.slug}/`} class="block md:flex md:flex-1">
     <div class="md:w-2/3">
       <OptimizedCover src={post.data.cover} alt={post.data.coverAlt} />
     </div>
