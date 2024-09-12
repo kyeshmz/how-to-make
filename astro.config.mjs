@@ -9,7 +9,7 @@ import { remarkModifiedTime } from "./src/utils/remark-modified-time.mjs";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://verse-astro.vercel.app/",
+  site: "https://fab.cba.mit.edu/classes/863.24/people/KyeShimizu/",
   trailingSlash: "always",
   prefetch: {
     prefetchAll: true,

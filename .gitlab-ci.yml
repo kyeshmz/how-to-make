@@ -3,5 +3,4 @@ job:
     - mkdir -p /var/www/classes/863.24/people/KyeShimizu
     - export GIT_WORK_TREE=/var/www/classes/863.24/people/KyeShimizu/
     - git checkout -f main
-    - git config pull.rebase false
     - git pull
