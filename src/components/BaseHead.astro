@@ -11,6 +11,7 @@ const { title, description, image = "/blog-placeholder-1.avif" } = Astro.props;
 ---
 
 <!-- Global Metadata -->
+<base href={import.meta.env.BASE_URL} />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -40,7 +41,6 @@ const { title, description, image = "/blog-placeholder-1.avif" } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
-<!-- <base href={import.meta.env.BASE_URL} /> -->
 
 <!-- Preline CSS -->
 <script>
