@@ -39,6 +39,7 @@ export default defineConfig({
     sitemap(),
     pagefind(),
     tailwind(),
+    relativeLinks(),
 
     partytown({
       config: {
