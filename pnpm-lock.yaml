@@ -28,7 +28,7 @@ importers:
         version: 5.1.0(astro@4.15.4(@types/node@22.0.2)(rollup@4.21.2)(typescript@5.6.2))(tailwindcss@3.4.10)
       '@iconify-json/tabler':
         specifier: ^1.2.1
-        version: 1.2.1
+        version: 1.2.2
       astro:
         specifier: ^4.15.4
         version: 4.15.4(@types/node@22.0.2)(rollup@4.21.2)(typescript@5.6.2)
@@ -414,8 +414,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@iconify-json/tabler@1.2.1':
-    resolution: {integrity: sha512-Ek2kVGZDuh3nD3+3FHnHRsthnwZScA1YQi8bNrEAZvU9C5gyNcUDRM9MBJ8eYR3C5P/2HkPjboMk+tIIewbc2w==}
+  '@iconify-json/tabler@1.2.2':
+    resolution: {integrity: sha512-sdHGvNKWm4TofzGm/rP5UythJBp82DqTOfjSlCLUTnuwCuRSJia5vfoIx2aEVRKq8jINj/V80c+A2k7jAW8Hlg==}
 
   '@iconify/tools@4.0.6':
     resolution: {integrity: sha512-riEQggXVuZNXjRdo+aKT0rkzn2XHslIqat8mdW/oVu5mLmP/95Hi+iaq4keT7WwMD97jsYPXMQ6QMCw0EWpRNw==}
@@ -3156,7 +3156,7 @@ snapshots:
   '@esbuild/win32-x64@0.21.5':
     optional: true
 
-  '@iconify-json/tabler@1.2.1':
+  '@iconify-json/tabler@1.2.2':
     dependencies:
       '@iconify/types': 2.0.0
 
