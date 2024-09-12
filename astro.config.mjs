@@ -10,8 +10,8 @@ import { remarkModifiedTime } from "./src/utils/remark-modified-time.mjs";
 // https://astro.build/config
 export default defineConfig({
   site: "https://fab.cba.mit.edu/classes/863.24/people/KyeShimizu/",
-  base: "/classes/863.24/people/KyeShimizu/",
-  // trailingSlash: "never",
+  base: "/classes/863.24/people/KyeShimizu",
+  trailingSlash: "always",
   prefetch: {
     prefetchAll: true,
     defaultStrategy: "viewport",
