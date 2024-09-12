@@ -1,0 +1,51 @@
+name: Deploy Astro Site to GitLab
+
+on:
+  push:
+    branches:
+      - main # Change this to your branch name if needed
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the GitHub repo
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Install Node.js and dependencies
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20" # Specify your Node.js version here
+
+      - name: Install dependencies
+        run: npm install
+
+      # Build the Astro site
+      - name: Build Astro site
+        run: npm run build
+
+      # Push the public directory contents to GitLab repository
+      - name: Deploy public folder to GitLab
+        run: |
+          # Navigate to the public directory
+          cd public
+
+          # Initialize a new Git repository in the public directory
+          git init
+          git config user.email "kyeshmz@media.mit.edu"
+          git config user.name "kyeshmz"
+
+          # Add the GitLab repository as a remote
+          git remote add gitlab https://oauth2:${{ secrets.GITLAB_TOKEN }}@gitlab.cba.mit.edu/classes/863.24/people/KyeShimizu.git
+
+          # Force-add all contents of the public directory
+          git add .
+          git commit -m "Deploy Astro site"
+
+          # Push to the GitLab repository (replace `main` with the deployment branch, if necessary)
+          git push --force gitlab master:main  # Replace 'main' if needed
+        env:
+          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}

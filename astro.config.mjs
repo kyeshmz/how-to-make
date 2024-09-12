@@ -1,11 +1,11 @@
+import mdx from "@astrojs/mdx";
+import partytown from "@astrojs/partytown";
+import sitemap from "@astrojs/sitemap";
+import tailwind from "@astrojs/tailwind";
+import icon from "astro-icon";
+import pagefind from "astro-pagefind";
 import { defineConfig } from "astro/config";
 import { remarkModifiedTime } from "./src/utils/remark-modified-time.mjs";
-import mdx from "@astrojs/mdx";
-import sitemap from "@astrojs/sitemap";
-import partytown from "@astrojs/partytown";
-import pagefind from "astro-pagefind";
-import icon from "astro-icon";
-import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,7 +13,7 @@ export default defineConfig({
   trailingSlash: "always",
   prefetch: {
     prefetchAll: true,
-    defaultStrategy: 'viewport',
+    defaultStrategy: "viewport",
   },
 
   experimental: {
@@ -51,6 +51,13 @@ export default defineConfig({
         tabler: ["*"],
       },
     }),
-    
   ],
+  // GitLab Pages requires exposed files to be located in a folder called "public".
+  // So we're instructing Astro to put the static build output in a folder of that name.
+  outDir: "public",
+
+  // The folder name Astro uses for static files (`public`) is already reserved
+  // for the build output. So in deviation from the defaults we're using a folder
+  // called `static` instead.
+  publicDir: "static",
 });
