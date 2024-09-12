@@ -33,15 +33,7 @@ const { Content } = await post.render();
       <div>
         <Content />
       </div>
-      <div class="prose-a:no-underline">
-        {
-          post.data.tags.map((tag) => (
-            <span class="mb-2 mr-2 inline-block rounded-full bg-neutral-200 px-3 py-1 text-sm hover:bg-neutral-500 dark:bg-neutral-600">
-              <a href={`/tags/${tag}/1/`}>{tag}</a>
-            </span>
-          ))
-        }
-      </div>
+
       <div class="flex justify-between">
         <small
           >Publish on <FormattedDate date={post.data.pubDate} />，Update on <FormattedDate
