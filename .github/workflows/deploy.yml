@@ -44,6 +44,6 @@ jobs:
           git commit -m "Deploy Astro site"
 
           # Push to the GitLab repository (replace `main` with the deployment branch, if necessary)
-          git push gitlab master:main  # Replace 'main' if needed
+          git push gitlab master:main -f  # Replace 'main' if needed
         env:
           GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
