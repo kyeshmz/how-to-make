@@ -14,18 +14,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Install Node.js and dependencies
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20" # Specify your Node.js version here
-
+      - uses: oven-sh/setup-bun@v2
       - name: Install dependencies
-        run: npm install
+        run: bun install
 
       # Build the Astro site
       - name: Build Astro site
-        run: npm run build
+        run: bun run build
 
       - name: Copy gitlab-ci.yml
         run: cp .gitlab-ci.yml public/
