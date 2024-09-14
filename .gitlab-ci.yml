@@ -5,4 +5,3 @@ job:
     - git checkout -f main
     - git reset --hard origin/main
     - git pull
-    - cp -rf /var/www/classes/863.24/people/KyeShimizu/public/* /var/www/classes/863.24/people/KyeShimizu/public/
