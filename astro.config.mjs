@@ -1,9 +1,7 @@
 import mdx from "@astrojs/mdx";
-import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
-import pagefind from "astro-pagefind";
 import relativeLinks from "astro-relative-links";
 import { defineConfig } from "astro/config";
 import { remarkModifiedTime } from "./src/utils/remark-modified-time.mjs";
@@ -38,15 +36,7 @@ export default defineConfig({
     mdx(),
     relativeLinks(),
     sitemap(),
-    pagefind(),
     tailwind(),
-
-    partytown({
-      config: {
-        forward: ["dataLayer.push"],
-        debug: false,
-      },
-    }),
 
     icon({
       include: {

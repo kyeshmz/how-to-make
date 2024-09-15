@@ -8,7 +8,7 @@ Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam s
 Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id cursus metus aliquam eleifend mi.
 
 Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-</content:encoded></item><item><title>The code fence is designed to guarantee</title><link>https://fab.cba.mit.edu/posts/components11/</link><guid isPermaLink="true">https://fab.cba.mit.edu/posts/components11/</guid><description>the basic building blocks of any Astro project</description><pubDate>Fri, 01 Sep 2023 00:00:00 GMT</pubDate><content:encoded>
+</content:encoded></item><item><title>Astro components are extremely flexible</title><link>https://fab.cba.mit.edu/posts/components1/</link><guid isPermaLink="true">https://fab.cba.mit.edu/posts/components1/</guid><description>the basic building blocks of any Astro project</description><pubDate>Fri, 01 Sep 2023 00:00:00 GMT</pubDate><content:encoded>
 **Astro components** are the basic building blocks of any Astro project. They are HTML-only templating components with no client-side runtime. You can spot an Astro component by its file extension: `.astro`.
 
 Astro components are extremely flexible. Often, an Astro component will contain some **reusable UI on the page**, like a header or a profile card. At other times, an Astro component may contain a smaller snippet of HTML, like a collection of common `&lt;meta&gt;` tags that make SEO easy to work with. Astro components can even contain an entire page layout.
@@ -367,363 +367,58 @@ A [`&lt;slot /&gt;` element](/en/core-concepts/astro-components/#slots) inside a
 ## Next Steps
 
 📚 Learn about using [UI framework components](/en/core-concepts/framework-components/) in your Astro project.
-</content:encoded></item><item><title>You can even write TypeScript in your component script</title><link>https://fab.cba.mit.edu/posts/components12/</link><guid isPermaLink="true">https://fab.cba.mit.edu/posts/components12/</guid><description>the basic building blocks of any Astro project</description><pubDate>Fri, 01 Sep 2023 00:00:00 GMT</pubDate><content:encoded>
-**Astro components** are the basic building blocks of any Astro project. They are HTML-only templating components with no client-side runtime. You can spot an Astro component by its file extension: `.astro`.
+</content:encoded></item><item><title>HTMAAA Week 2 / Computer Controlled Cutting</title><link>https://fab.cba.mit.edu/posts/week2/</link><guid isPermaLink="true">https://fab.cba.mit.edu/posts/week2/</guid><description>Working with the laser cutter and vinyl cutter</description><pubDate>Fri, 01 Sep 2023 00:00:00 GMT</pubDate><content:encoded>
+import { Image } from &quot;astro:assets&quot;;
+import OptimizedCover from &quot;@components/OptimizedPicture.astro&quot;;
 
-Astro components are extremely flexible. Often, an Astro component will contain some **reusable UI on the page**, like a header or a profile card. At other times, an Astro component may contain a smaller snippet of HTML, like a collection of common `&lt;meta&gt;` tags that make SEO easy to work with. Astro components can even contain an entire page layout.
+import cutecutter from &quot;../images/week2/cutecutter.jpg&quot;;
+import cutecutter2 from &quot;../images/week2/cutecutter2.jpg&quot;;
+import Johnny from &quot;../images/week2/johnny.jpg&quot;;
+import finaljohnny from &quot;../images/week2/finaljohnny.jpg&quot;;
+import help from &quot;../images/week2/help.jpg&quot;;
+import finalkerf from &quot;../images/week2/finalkerf.jpg&quot;;
 
-The most important thing to know about Astro components is that they **don&apos;t render on the client**. They render to HTML either at build-time or on-demand using [server-side rendering (SSR)](/en/guides/server-side-rendering/). You can include JavaScript code inside of your component frontmatter, and all of it will be stripped from the final page sent to your users&apos; browsers. The result is a faster site, with zero JavaScript footprint added by default.
+## Laser Cutter
 
-When your Astro component does need client-side interactivity, you can add [standard HTML `&lt;script&gt;` tags](/en/guides/client-side-scripts/) or [UI Framework components](/en/core-concepts/framework-components/#hydrating-interactive-components).
+### Group Assignment
 
-## Component Structure
+This was the final
 
-An Astro component is made up of two main parts: the **Component Script** and the **Component Template**. Each part performs a different job, but together they provide a framework that is both easy to use and expressive enough to handle whatever you might want to build.
+&lt;OptimizedCover
+  src={finalkerf}
+  alt=&quot;Final parts from all of the experimentation&quot;
+/&gt;
 
-```astro title=&quot;src/components/EmptyComponent.astro&quot;
----
-// Component Script (JavaScript)
----
+## Vinyl Cutter
 
-&lt;!-- Component Template (HTML + JS Expressions) --&gt;
-```
+The goal was to make a sticker that looked a bit like Johnny because he was so helpful during the laser cutting process and sharing his MechE knowledge with us.
 
-### The Component Script
+&lt;OptimizedCover src={Johnny} alt=&quot;Johnny&quot; /&gt;
 
-Astro uses a code fence (`---`) to identify the component script in your Astro component. If you&apos;ve ever written Markdown before, you may already be familiar with a similar concept called _frontmatter._ Astro&apos;s idea of a component script was directly inspired by this concept.
+But because the photo was too high res, and it would take days to cut it out and place it on something, we had to find out a way to make it lower res.
 
-You can use the component script to write any JavaScript code that you need to render your template. This can include:
+I used a tool called [cutecutter](https://cutecutter.com/make-a-vinyl-decal/)
+, which was honestly amazing as it was very easy to use and had easy options to lower the resolution of the image.
 
-- importing other Astro components
-- importing other framework components, like React
-- importing data, like a JSON file
-- fetching content from an API or database
-- creating variables that you will reference in your template
+&lt;OptimizedCover src={cutecutter} alt=&quot;Johnny being segemented&quot; /&gt;
 
-```astro title=&quot;src/components/MyComponent.astro&quot;
----
-import SomeAstroComponent from &quot;../components/SomeAstroComponent.astro&quot;;
-import SomeReactComponent from &quot;../components/SomeReactComponent.jsx&quot;;
-import someData from &quot;../data/pokemon.json&quot;;
+It then gave me some parameters to play with, and I was able to get it to down to the right amount of abstraction that I needed. I wish it really just made all the parts into one part so that taking off of the cutter would be easier, but alas no.
 
-// Access passed-in component props, like `&lt;X title=&quot;Hello, World&quot; /&gt;`
-const { title } = Astro.props;
-// Fetch external data, even from a private API or database
-const data = await fetch(&quot;SOME_SECRET_API_URL/users&quot;).then((r) =&gt; r.json());
----
+&lt;OptimizedCover src={cutecutter2} alt=&quot;Cutecutter parameters&quot; /&gt;
 
-&lt;!-- Your template here! --&gt;
-```
+Cutting it out was a bit of a pain, but it went out better than I expected.
+Note to myself in the future: Strong stick on the cutter really makes sure that it is strong stick!
 
-The code fence is designed to guarantee that the JavaScript that you write in it is &quot;fenced in.&quot; It won&apos;t escape into your frontend application, or fall into your user&apos;s hands. You can safely write code here that is expensive or sensitive (like a call to your private database) without worrying about it ever ending up in your user&apos;s browser.
+&lt;OptimizedCover src={finaljohnny} alt=&quot;Cutecutter parameters&quot; /&gt;
 
-:::tip
-You can even write TypeScript in your component script!
-:::
+I also helped a few people out with their logos. I used a tool called [removebg](https://www.remove.bg/) for my friends who had white and black logos (which were mostly really MIT Media Lab logos), and it made it so that only the black part of the logo was left, which was perfect for the logo.
 
-### The Component Template
+&lt;OptimizedCover src={help} alt=&quot;Helping out others&quot; /&gt;
 
-The component template is below the code fence and determines the HTML output of your component.
+## author: VV
 
-If you write plain HTML here, your component will render that HTML in any Astro page it is imported and used.
+The tolerance of the laser seems to be 49.9 against trying to cut a 50mm square of cardboard.
+So it has a difference of 1 mm for the laser.
 
-However, [Astro&apos;s component template syntax](/en/core-concepts/astro-syntax/) also supports **JavaScript expressions**, Astro [`&lt;style&gt;`](/en/guides/styling/#styling-in-astro) and [`&lt;script&gt;`](/en/guides/client-side-scripts/#using-script-in-astro) tags, **imported components**, and [**special Astro directives**](/en/reference/directives-reference/). Data and values defined in the component script can be used in the component template to produce dynamically-created HTML.
-
-```astro title=&quot;src/components/MyFavoritePokemon.astro&quot;
----
-// Your component script here!
-import Banner from &quot;../components/Banner.astro&quot;;
-import ReactPokemonComponent from &quot;../components/ReactPokemonComponent.jsx&quot;;
-const myFavoritePokemon = [
-  /* ... */
-];
-const { title } = Astro.props;
----
-
-&lt;!-- HTML comments supported! --&gt;{/* JS comment syntax is also valid! */}
-
-&lt;Banner /&gt;
-&lt;h1&gt;Hello, world!&lt;/h1&gt;
-
-&lt;!-- Use props and other variables from the component script: --&gt;
-&lt;p&gt;{title}&lt;/p&gt;
-
-&lt;!-- Include other UI framework components with a `client:` directive to hydrate: --&gt;
-&lt;ReactPokemonComponent client:visible /&gt;
-
-&lt;!-- Mix HTML with JavaScript expressions, similar to JSX: --&gt;
-&lt;ul&gt;
-  {myFavoritePokemon.map((data) =&gt; &lt;li&gt;{data.name}&lt;/li&gt;)}
-&lt;/ul&gt;
-
-&lt;!-- Use a template directive to build class names from multiple strings or even objects! --&gt;
-&lt;p class:list={[&quot;add&quot;, &quot;dynamic&quot;, { classNames: true }]}&gt;&lt;/p&gt;
-```
-
-## Component-based design
-
-Components are designed to be **reusable** and **composable**. You can use components inside of other components to build more and more advanced UI. For example, a `Button` component could be used to create a `ButtonGroup` component:
-
-```astro title=&quot;src/components/ButtonGroup.astro&quot;
----
-import Button from &quot;./Button.astro&quot;;
----
-
-&lt;div&gt;
-  &lt;Button title=&quot;Button 1&quot; /&gt;
-  &lt;Button title=&quot;Button 2&quot; /&gt;
-  &lt;Button title=&quot;Button 3&quot; /&gt;
-&lt;/div&gt;
-```
-
-## Component Props
-
-An Astro component can define and accept props. These props then become available to the component template for rendering HTML. Props are available on the `Astro.props` global in your frontmatter script.
-
-Here is an example of a component that receives a `greeting` prop and a `name` prop. Notice that the props to be received are destructured from the global `Astro.props` object.
-
-```astro &quot;Astro.props&quot;
----
-// src/components/GreetingHeadline.astro
-// Usage: &lt;GreetingHeadline greeting=&quot;Howdy&quot; name=&quot;Partner&quot; /&gt;
-const { greeting, name } = Astro.props;
----
-
-&lt;h2&gt;{greeting}, {name}!&lt;/h2&gt;
-```
-
-This component, when imported and rendered in other Astro components, layouts or pages, can pass these props as attributes:
-
-```astro /(\w+)=\S+/
----
-// src/components/GreetingCard.astro
-import GreetingHeadline from &quot;./GreetingHeadline.astro&quot;;
-const name = &quot;Astro&quot;;
----
-
-&lt;h1&gt;Greeting Card&lt;/h1&gt;
-&lt;GreetingHeadline greeting=&quot;Hi&quot; name={name} /&gt;
-&lt;p&gt;I hope you have a wonderful day!&lt;/p&gt;
-```
-
-You can also define your props with TypeScript with a `Props` type interface. Astro will automatically pick up the `Props` interface in your frontmatter and give type warnings/errors. These props can also be given default values when destructured from `Astro.props`.
-
-```astro ins={3-6}
----
-// src/components/GreetingHeadline.astro
-interface Props {
-  name: string;
-  greeting?: string;
-}
-
-const { greeting = &quot;Hello&quot;, name } = Astro.props;
----
-
-&lt;h2&gt;{greeting}, {name}!&lt;/h2&gt;
-```
-
-Component props can be given default values to use when none are provided.
-
-```astro ins=&quot;= &quot;Hello&quot;&quot; ins=&quot;= &quot;Astronaut&quot;&quot;
----
-// src/components/GreetingHeadline.astro
-const { greeting = &quot;Hello&quot;, name = &quot;Astronaut&quot; } = Astro.props;
----
-
-&lt;h2&gt;{greeting}, {name}!&lt;/h2&gt;
-```
-
-## Slots
-
-The `&lt;slot /&gt;` element is a placeholder for external HTML content, allowing you to inject (or &quot;slot&quot;) child elements from other files into your component template.
-
-By default, all child elements passed to a component will be rendered in its `&lt;slot /&gt;`
-
-:::note
-Unlike _props_, which are attributes passed to an Astro component available for use throughout your component with `Astro.props`, _slots_ render child HTML elements where they are written.
-:::
-
-```astro &quot;&lt;slot /&gt;&quot;
----
-// src/components/Wrapper.astro
-import Header from &quot;./Header.astro&quot;;
-import Logo from &quot;./Logo.astro&quot;;
-import Footer from &quot;./Footer.astro&quot;;
-
-const { title } = Astro.props;
----
-
-&lt;div id=&quot;content-wrapper&quot;&gt;
-  &lt;Header /&gt;
-  &lt;Logo /&gt;
-  &lt;h1&gt;{title}&lt;/h1&gt;
-  &lt;slot /&gt;
-  &lt;!-- children will go here --&gt;
-  &lt;Footer /&gt;
-&lt;/div&gt;
-```
-
-```astro {6-7}
----
-// src/pages/fred.astro
-import Wrapper from &quot;../components/Wrapper.astro&quot;;
----
-
-&lt;Wrapper title=&quot;Fred&apos;s Page&quot;&gt;
-  &lt;h2&gt;All about Fred&lt;/h2&gt;
-  &lt;p&gt;Here is some stuff about Fred.&lt;/p&gt;
-&lt;/Wrapper&gt;
-```
-
-This pattern is the basis of an [Astro layout component](/en/core-concepts/layouts/): an entire page of HTML content can be “wrapped” with `&lt;SomeLayoutComponent&gt;&lt;/SomeLayoutComponent&gt;` tags and sent to the component to render inside of common page elements defined there.
-
-### Named Slots
-
-An Astro component can also have named slots. This allows you to pass only HTML elements with the corresponding slot name into a slot&apos;s location.
-
-Slots are named using the `name` attribute:
-
-```astro /&lt;slot .*?/&gt;/
----
-// src/components/Wrapper.astro
-import Header from &quot;./Header.astro&quot;;
-import Logo from &quot;./Logo.astro&quot;;
-import Footer from &quot;./Footer.astro&quot;;
-
-const { title } = Astro.props;
----
-
-&lt;div id=&quot;content-wrapper&quot;&gt;
-  &lt;Header /&gt;
-  &lt;slot name=&quot;after-header&quot; /&gt;
-  &lt;!--  children with the `slot=&quot;after-header&quot;` attribute will go here --&gt;
-  &lt;Logo /&gt;
-  &lt;h1&gt;{title}&lt;/h1&gt;
-  &lt;slot /&gt;
-  &lt;!--  children without a `slot`, or with `slot=&quot;default&quot;` attribute will go here --&gt;
-  &lt;Footer /&gt;
-  &lt;slot name=&quot;after-footer&quot; /&gt;
-  &lt;!--  children with the `slot=&quot;after-footer&quot;` attribute will go here --&gt;
-&lt;/div&gt;
-```
-
-To inject HTML content into a particular slot, use the `slot` attribute on any child element to specify the name of the slot. All other child elements of the component will be injected into the default (unnamed) `&lt;slot /&gt;`.
-
-```astro /slot=&quot;.*?&quot;/
----
-// src/pages/fred.astro
-import Wrapper from &quot;../components/Wrapper.astro&quot;;
----
-
-&lt;Wrapper title=&quot;Fred&apos;s Page&quot;&gt;
-  &lt;img src=&quot;https://my.photo/fred.jpg&quot; slot=&quot;after-header&quot; /&gt;
-  &lt;h2&gt;All about Fred&lt;/h2&gt;
-  &lt;p&gt;Here is some stuff about Fred.&lt;/p&gt;
-  &lt;p slot=&quot;after-footer&quot;&gt;Copyright 2022&lt;/p&gt;
-&lt;/Wrapper&gt;
-```
-
-Use a `slot=&quot;my-slot&quot;` attribute on the child element that you want to pass through to a matching `&lt;slot name=&quot;my-slot&quot; /&gt;` placeholder in your component.
-
-Note that named slots must be an immediate child of the component. You cannot pass named slots through nested elements.
-
-:::tip
-Named slots can also be passed to [UI framework components](/en/core-concepts/framework-components/)!
-:::
-
-:::note
-An astro slot name can not be dynamically generated, such as within a map function. If this feature is needed within UI framework components, it might be best to generate these dynamic slots within the framework itself.
-:::
-
-### Fallback Content for Slots
-
-Slots can also render **fallback content**. When there are no matching children passed to a slot, a `&lt;slot /&gt;` element will render its own placeholder children.
-
-```astro {14}
----
-// src/components/Wrapper.astro
-import Header from &quot;./Header.astro&quot;;
-import Logo from &quot;./Logo.astro&quot;;
-import Footer from &quot;./Footer.astro&quot;;
-
-const { title } = Astro.props;
----
-
-&lt;div id=&quot;content-wrapper&quot;&gt;
-  &lt;Header /&gt;
-  &lt;Logo /&gt;
-  &lt;h1&gt;{title}&lt;/h1&gt;
-  &lt;slot&gt;
-    &lt;p&gt;This is my fallback content, if there is no child passed into slot&lt;/p&gt;
-  &lt;/slot&gt;
-  &lt;Footer /&gt;
-&lt;/div&gt;
-```
-
-### Transferring slots
-
-Slots can be transferred to other components. For example, when creating nested layouts:
-
-```astro title=&quot;src/layouts/BaseLayout.astro&quot; {9,12}
----
-
----
-
-&lt;html lang=&quot;en&quot;&gt;
-  &lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot; /&gt;
-    &lt;link rel=&quot;icon&quot; type=&quot;image/svg+xml&quot; href=&quot;/favicon.svg&quot; /&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot; /&gt;
-    &lt;meta name=&quot;generator&quot; content={Astro.generator} /&gt;
-    &lt;slot name=&quot;head&quot; /&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;slot /&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-```
-
-```astro {6,7}
-// src/layouts/HomeLayout.astro
-
-import BaseLayout from &apos;./BaseLayout.astro&apos;;
-&lt;BaseLayout&gt;
-  &lt;slot name=&quot;head&quot; slot=&quot;head&quot; /&gt;
-  &lt;slot /&gt;
-&lt;/BaseLayout&gt;
-```
-
-:::note
-Named slots can be transferred to another component using both the `name` and `slot` attributes on a `&lt;slot /&gt;` tag
-:::
-
-Now, the default and `head` slots passed to `HomeLayout` will be transferred to the `BaseLayout` parent
-
-```astro
-// src/pages/index.astro
-
-import HomeLayout from &apos;../layouts/HomeLayout.astro&apos;;
-&lt;HomeLayout&gt;
-  &lt;title slot=&quot;head&quot;&gt;Astro&lt;/title&gt;
-  &lt;h1&gt;Astro&lt;/h1&gt;
-&lt;/HomeLayout&gt;
-```
-
-## HTML Components
-
-Astro supports importing and using `.html` files as components or placing these files within the `src/pages/` subdirectory as pages. You may want to use HTML components if you&apos;re reusing code from an existing site built without a framework, or if you want to ensure that your component has no dynamic features.
-
-HTML components must contain only valid HTML, and therefore lack key Astro component features:
-
-- They don&apos;t support frontmatter, server-side imports, or dynamic expressions.
-- Any `&lt;script&gt;` tags are left unbundled, treated as if they had `is:inline`.
-- They can only [reference assets that are in the `public/` folder](/en/core-concepts/project-structure/#public).
-
-:::note
-A [`&lt;slot /&gt;` element](/en/core-concepts/astro-components/#slots) inside an HTML component will work as it would in an Astro component. In order to use the [HTML Web Component Slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) element instead, add `is:inline` to your `&lt;slot&gt;` element.
-:::
-
-## Next Steps
-
-📚 Learn about using [UI framework components](/en/core-concepts/framework-components/) in your Astro project.
+2 for the kerf for 4mm cardboard
 </content:encoded></item></channel></rss>
