@@ -1,9 +1,9 @@
 name: Deploy Astro Site to GitLab
 
-# on:
-#   push:
-#     branches:
-#       - main # Change this to your branch name if needed
+on:
+  push:
+    branches:
+      - main # Change this to your branch name if needed
 
 jobs:
   build-and-deploy:
