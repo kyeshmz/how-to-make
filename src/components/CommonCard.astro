@@ -17,7 +17,7 @@ const { post } = Astro.props;
     <OptimizedCover src={post.data.cover} alt={post.data.coverAlt} />
     <div class="absolute bottom-0 end-0 start-0 bg-gradient-to-t p-5 md:p-6">
       <div class="mt-16 flex items-center gap-4 text-xs text-white">
-        <span>{post.data.tags.join(" ")}</span>
+        <span>{post.data.tags?.join(" ")}</span>
         <FormattedDate date={post.data.pubDate} />
       </div>
       <h3 class="mt-2 text-lg font-bold text-white">{post.data.title}</h3>
