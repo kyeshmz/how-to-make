@@ -10,7 +10,7 @@ const posts = defineCollection({
     cover: z.string(),
     coverAlt: z.string(),
     category: z.array(z.string()),
-    tags: z.array(z.string()),
+    tags: z.array(z.string()).optional(),
     author: z.string(),
   }),
 });
