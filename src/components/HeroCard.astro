@@ -43,7 +43,7 @@ const truncatedDescription = truncateUTF8String(post.data.description, 150);
       <div
         class="mt-8 flex items-center gap-4 text-xs text-white dark:text-white md:text-neutral-900"
       >
-        <span>{post.data.tags.join(" ")}</span>
+        <span>{post.data.tags?.join(" ")}</span>
         <FormattedDate date={post.data.pubDate} />
       </div>
       <h3
