@@ -13,15 +13,17 @@ coverAlt: AstroVerse-Aliases
 author: Kye
 ---
 
-import { Image } from "astro:assets";
 import OptimizedCover from "@components/OptimizedPicture.astro";
+import { Image } from "astro:assets";
 
 import cutecutter from "../images/week2/cutecutter.jpg";
 import cutecutter2 from "../images/week2/cutecutter2.jpg";
-import Johnny from "../images/week2/johnny.jpg";
 import finaljohnny from "../images/week2/finaljohnny.jpg";
-import help from "../images/week2/help.jpg";
 import finalkerf from "../images/week2/finalkerf.jpg";
+import grip from "../images/week2/grip.jpg";
+import help from "../images/week2/help.jpg";
+import Johnny from "../images/week2/johnny.jpg";
+import paper from "../images/week2/paper.jpg";
 
 ## Laser Cutter
 
@@ -33,6 +35,58 @@ This was the final
   src={finalkerf}
   alt="Final parts from all of the experimentation"
 />
+
+### Personal Assignment
+
+For the personal assignment, I wanted to create a Noguchi Lamp, which is a lamp made by [Isamu Noguchi](https://www.noguchi.org/isamu-noguchi/biography/biography/).
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/4DDCOWA9q7U?si=CiGwRQnAenX7amFD"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+></iframe>
+
+I wanted to first make the lamp, but I was suprised at how Fusion360 was really manual, compared to the algorithmic wonder that is Rhino and Grasshopper. But I wanted to learn something new, so I decided to use Fusion360.
+
+While creating the initial design of the lamp, I was making mistakes left and right, with only a few days left to make everything.
+
+Then I remembered,
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/tV6nzcfG2CA?si=2k-tXfKvojz1T3yK"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+></iframe>
+
+Maybe it might be better to just start small, or simple that I knew that I could make and go from there. So that led me to really start small and try to build up from there.
+
+So really, the first thing I did was just sketch out the schematics of how big I wanted everything to be on really plain paper.
+It wasn't really the prettiest thing, but it was a good start.
+
+<OptimizedCover src={paper} alt="paper" />
+
+Then, I could build up from there.
+
+So then I modeled my inital design, and started to use the laser cutter.
+
+This is where the kerf tests from before came in handy.
+I was able to get the laser cutter to cut out my designs, while still upholding the structure of the lamp!
+
+The several other things I wanted to do with the lamp looked like this:
+
+1. Lock down what kind of bulb I could stick into it (or really where to find something that would work)
+2. Make it more organic looking
+3. Put on some living hinge shades!
 
 ## Vinyl Cutter
 
@@ -54,15 +108,17 @@ It then gave me some parameters to play with, and I was able to get it to down t
 Cutting it out was a bit of a pain, but it went out better than I expected.
 Note to myself in the future: Strong stick on the cutter really makes sure that it is strong stick!
 
+<OptimizedCover src={grip} alt="Helping out others" />
+
 <OptimizedCover src={finaljohnny} alt="Cutecutter parameters" />
 
 I also helped a few people out with their logos. I used a tool called [removebg](https://www.remove.bg/) for my friends who had white and black logos (which were mostly really MIT Media Lab logos), and it made it so that only the black part of the logo was left, which was perfect for the logo.
 
 <OptimizedCover src={help} alt="Helping out others" />
 
-## author: VV
+### Memo
 
 The tolerance of the laser seems to be 49.9 against trying to cut a 50mm square of cardboard.
 So it has a difference of 1 mm for the laser.
 
-2 for the kerf for 4mm cardboard
+0.2 offset for the kerf for 4mm cardboard
