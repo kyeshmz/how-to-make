@@ -8,22 +8,36 @@ tags:
   - Laser Cutter
   - Vinyl Cutter
 pubDate: 2023-09-01
-cover: https://images.unsplash.com/photo-1550684376-efcbd6e3f031?w=1960&h=1102&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YmxhY2t8ZW58MHwwfDB8fHwy
+cover: https://images.unsplash.com/photo-1596552571892-2dda2c594670?q=80&w=1960&h=1102&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 coverAlt: AstroVerse-Aliases
 author: Kye
 ---
 
 import OptimizedCover from "@components/OptimizedPicture.astro";
-import { Image } from "astro:assets";
 
 import cutecutter from "../images/week2/cutecutter.jpg";
 import cutecutter2 from "../images/week2/cutecutter2.jpg";
+import failure from "../images/week2/failure.jpg";
 import finaljohnny from "../images/week2/finaljohnny.jpg";
 import finalkerf from "../images/week2/finalkerf.jpg";
 import grip from "../images/week2/grip.jpg";
 import help from "../images/week2/help.jpg";
 import Johnny from "../images/week2/johnny.jpg";
 import paper from "../images/week2/paper.jpg";
+import prototype1 from "../images/week2/prototype1.jpg";
+
+## Assignment
+
+group assignment:
+
+- do your lab's safety training
+- characterize your lasercutter's focus, power, speed, rate,
+- - kerf, joint clearance and types
+
+individual assignment:
+
+- cut something on the vinylcutter
+- design, lasercut, and document a parametric construction kit, accounting for the lasercutter kerf, which can be assembled in multiple ways, and for extra credit include elements that aren't flat
 
 ## Laser Cutter
 
@@ -81,6 +95,12 @@ So then I modeled my inital design, and started to use the laser cutter.
 
 This is where the kerf tests from before came in handy.
 I was able to get the laser cutter to cut out my designs, while still upholding the structure of the lamp!
+
+<OptimizedCover src={prototype1} alt="prototype1" />
+
+There was some failures because of the document position
+
+<OptimizedCover src={failure} alt="failure" />
 
 The several other things I wanted to do with the lamp looked like this:
 

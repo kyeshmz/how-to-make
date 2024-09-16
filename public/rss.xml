@@ -367,54 +367,7 @@ A [`&lt;slot /&gt;` element](/en/core-concepts/astro-components/#slots) inside a
 ## Next Steps
 
 📚 Learn about using [UI framework components](/en/core-concepts/framework-components/) in your Astro project.
-</content:encoded></item><item><title>HTMAAA Week 2 / Computer Controlled Cutting</title><link>https://fab.cba.mit.edu/posts/week2/</link><guid isPermaLink="true">https://fab.cba.mit.edu/posts/week2/</guid><description>Working with the laser cutter and vinyl cutter</description><pubDate>Fri, 01 Sep 2023 00:00:00 GMT</pubDate><content:encoded>
-import { Image } from &quot;astro:assets&quot;;
-import OptimizedCover from &quot;@components/OptimizedPicture.astro&quot;;
-
-import cutecutter from &quot;../images/week2/cutecutter.jpg&quot;;
-import cutecutter2 from &quot;../images/week2/cutecutter2.jpg&quot;;
-import Johnny from &quot;../images/week2/johnny.jpg&quot;;
-import finaljohnny from &quot;../images/week2/finaljohnny.jpg&quot;;
-import help from &quot;../images/week2/help.jpg&quot;;
-import finalkerf from &quot;../images/week2/finalkerf.jpg&quot;;
-
-## Laser Cutter
-
-### Group Assignment
-
-This was the final
-
-&lt;OptimizedCover
-  src={finalkerf}
-  alt=&quot;Final parts from all of the experimentation&quot;
-/&gt;
-
-## Vinyl Cutter
-
-The goal was to make a sticker that looked a bit like Johnny because he was so helpful during the laser cutting process and sharing his MechE knowledge with us.
-
-&lt;OptimizedCover src={Johnny} alt=&quot;Johnny&quot; /&gt;
-
-But because the photo was too high res, and it would take days to cut it out and place it on something, we had to find out a way to make it lower res.
-
-I used a tool called [cutecutter](https://cutecutter.com/make-a-vinyl-decal/)
-, which was honestly amazing as it was very easy to use and had easy options to lower the resolution of the image.
-
-&lt;OptimizedCover src={cutecutter} alt=&quot;Johnny being segemented&quot; /&gt;
-
-It then gave me some parameters to play with, and I was able to get it to down to the right amount of abstraction that I needed. I wish it really just made all the parts into one part so that taking off of the cutter would be easier, but alas no.
-
-&lt;OptimizedCover src={cutecutter2} alt=&quot;Cutecutter parameters&quot; /&gt;
-
-Cutting it out was a bit of a pain, but it went out better than I expected.
-Note to myself in the future: Strong stick on the cutter really makes sure that it is strong stick!
-
-&lt;OptimizedCover src={finaljohnny} alt=&quot;Cutecutter parameters&quot; /&gt;
-
-I also helped a few people out with their logos. I used a tool called [removebg](https://www.remove.bg/) for my friends who had white and black logos (which were mostly really MIT Media Lab logos), and it made it so that only the black part of the logo was left, which was perfect for the logo.
-
-&lt;OptimizedCover src={help} alt=&quot;Helping out others&quot; /&gt;
-
+</content:encoded></item><item><title>HTMAAA Week 2</title><link>https://fab.cba.mit.edu/posts/week1/</link><guid isPermaLink="true">https://fab.cba.mit.edu/posts/week1/</guid><description>the basic building blocks of any Astro project</description><pubDate>Fri, 01 Sep 2023 00:00:00 GMT</pubDate><content:encoded>
 ## author: VV
 
 The tolerance of the laser seems to be 49.9 against trying to cut a 50mm square of cardboard.
