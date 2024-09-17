@@ -43,8 +43,7 @@ export const HeaderLinks = [
 
 // Social Links, src/components/Footer.astro
 export const SocialLinks = [
-  { href: "/rss.xml", icon: "tabler:rss", label: "RSS" },
-  {
+ {
     href: "https://twitter.com/kyeshimizu",
     icon: "tabler:brand-twitter",
     label: "Twitter",

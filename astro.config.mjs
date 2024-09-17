@@ -1,5 +1,4 @@
 import mdx from "@astrojs/mdx";
-import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 import relativeLinks from "astro-relative-links";
@@ -39,7 +38,6 @@ export default defineConfig({
   integrations: [
     mdx(),
     relativeLinks(),
-    sitemap(),
     tailwind(),
 
     icon({
