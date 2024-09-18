@@ -15,4 +15,4 @@ _I am a fab class student, responsible for:_
 
 Signed by committing this file in my repository,
 
-(your name goes here)
+Kye Shimizu
