@@ -14,8 +14,8 @@ interface Props {
 const {
   src,
   alt,
-  widths = [980],
-  sizes = `(max-width: 360px) 980px, 
+  widths = [392, 980],
+  sizes = `(max-width: 360px) 392px, 
            (max-width: 720px) 980px, 
            (max-width: 1600px) 980px, 
            980px`,
@@ -28,6 +28,8 @@ const {
 <Picture
   src={src}
   alt={alt}
+  widths={widths}
+  sizes={sizes}
   formats={formats}
   fallbackFormat={fallbackFormat}
   class={className}
