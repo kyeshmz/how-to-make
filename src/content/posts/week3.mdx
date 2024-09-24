@@ -15,6 +15,11 @@ author: Kye
 
 import OptimizedCover from "@components/OptimizedPicture.astro";
 
+import attiny from "../images/week3/attiny.jpg";
+import boards from "../images/week3/boards.jpg";
+import final from "../images/week3/final.jpg";
+import long from "../images/week3/long.jpg";
+
 # Assignment
 
 group assignment:
@@ -28,3 +33,74 @@ individual assignment:
 - extra credit: try different languages &/or development environments
 
 ##
+
+We basically learned alot about different boards and the different protocols that they use.
+AVR 8 and ARM have different protocols for communicating with the microcontroller.
+
+<OptimizedCover src={boards} alt="attiny" />
+
+We also learned about:
+
+JTAG / SWD
+
+- JTAG requires 4 signal lines
+- SWD only requires 2 signal lines
+
+AVR 8 / ARM
+
+- The (ATtiny 1,2 series and AVR Dx) are AVR 8
+- - which means they are 8-bit microcontrollers, so they take alot of time to process 16-bit instructions
+- - so 4 cycles per instruction, rather than 1 cycle for a 16 bit machine! Ours is 64 bit which is pretty good
+
+- UPDI target !(https://gitlab.fabcloud.org/pub/programmers/quentorres/-/raw/main/img/updi.png)
+
+<OptimizedCover src={attiny} alt="attiny" />
+
+SAMD / RP2040 / ESP32
+
+- The SAMD / RP2040 / ESP32 are ARM architecture boards
+- - The SAMD is a native USB devices and is
+- - The RP2040 has human readable documentation / does not have built in flash memory
+- - RP2040 and ESP32 have enough power to use microPython because they have enough processer power!!
+- - The ESP32 has wifi and bluetooth and is probably overkill for alot of the things that we make!
+- SWD is an ARM specific protocol designed specifically for micro debugging.
+
+https://github.com/qbolsee/ArduinoCore-fab-sam
+
+## Personal Project
+
+https://wokwi.com/projects/409835697200587777
+
+I was working to use OSC with the ESP32 and I found out that it was not possible due to CAPITALISM!!
+
+Noticed that you need a paid account to use anything that uses the internet for the ESP32, which was the whole point of the project.
+
+```
+
+/* ESP32 HTTP IoT Server Example for Wokwi.com
+
+  https://wokwi.com/projects/320964045035274834
+
+  To test, you need the Wokwi IoT Gateway, as explained here:
+
+  https://docs.wokwi.com/guides/esp32-wifi#the-private-gateway
+
+  Then start the simulation, and open http://localhost:9080
+  in another browser tab.
+
+  Note that the IoT Gateway requires a Wokwi Club subscription.
+  To purchase a Wokwi Club subscription, go to https://wokwi.com/club
+*/
+```
+
+Oof.
+I then tried to hook it up to use a crystal display, but even that was too much.
+Maybe it was wokwi trying to tell me that I was doing too much for my own good.
+
+<OptimizedCover src={long} alt="Compilation too long" />
+
+But that was the end of my project, unable to compile for the love of the game
+
+<OptimizedCover src={final} alt="Compilation too long" />
+
+And for those considering the VSCODE extension, I was not able to get it to work and it really seems like a hot mess with the documentation as well.

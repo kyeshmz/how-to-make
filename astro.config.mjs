@@ -1,12 +1,12 @@
 import mdx from "@astrojs/mdx";
+import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 import relativeLinks from "astro-relative-links";
 import { defineConfig } from "astro/config";
-import { remarkModifiedTime } from "./src/utils/remark-modified-time.mjs";
-
 import fs from "node:fs/promises";
 import path from "node:path";
+import { remarkModifiedTime } from "./src/utils/remark-modified-time.mjs";
 
 // https://astro.build/config
 export default defineConfig({
@@ -40,6 +40,7 @@ export default defineConfig({
     relativeLinks(),
     tailwind(),
 
+    react(),
     icon({
       include: {
         tabler: ["*"],
