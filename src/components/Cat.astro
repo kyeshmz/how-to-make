@@ -1,0 +1,25 @@
+---
+const { title, description } = Astro.props;
+---
+
+<canvas id="canvas"></canvas>
+
+<script>
+  import { Rive } from "@rive-app/canvas-lite";
+
+  const r = new Rive({
+    src: "https://public.rive.app/community/runtime-files/8999-17412-cat-simple-edit.riv",
+    canvas: document.getElementById("canvas"),
+    autoplay: true,
+    // artboard: "Arboard", // Optional. If not supplied the default is selected
+    stateMachines: ["State Machine 1"],
+    onLoad: () => {
+      // Ensure the drawing surface matches the canvas size and device pixel ratio
+      r.resizeDrawingSurfaceToCanvas();
+    },
+    onStop: () => {
+      // When the animation stops, reset the canvas to its original size
+      r.cleanup();
+    },
+  });
+</script>

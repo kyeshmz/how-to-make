@@ -1,4 +1,5 @@
 ---
+import Cat from "@components/Cat.astro";
 import Card from "@components/CommonCard.astro";
 import HeroCard from "@components/HeroCard.astro";
 import Pagination from "@components/Pagination.astro";
@@ -20,6 +21,11 @@ const basePath = "/page/";
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <div class="flex items-center justify-around px-12">
+    <p class="text-3xl text-white">How to make Anything<br /> by Kye Shimizu</p>
+    <Cat />
+  </div>
+
   <div class="grid grid-cols-1">
     <div class="col-span-1 mb-4">
       {firstPagePosts.length > 0 && <HeroCard post={firstPagePosts[0]} />}

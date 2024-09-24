@@ -26,6 +26,12 @@ importers:
       '@iconify-json/tabler':
         specifier: ^1.2.3
         version: 1.2.3
+      '@rive-app/canvas':
+        specifier: ^2.21.3
+        version: 2.21.3
+      '@rive-app/canvas-lite':
+        specifier: ^2.21.3
+        version: 2.21.3
       '@types/react':
         specifier: ^18.3.8
         version: 18.3.8
@@ -53,9 +59,6 @@ importers:
       gsap:
         specifier: ^3.12.5
         version: 3.12.5
-      i:
-        specifier: ^0.3.7
-        version: 0.3.7
       preline:
         specifier: ^2.4.1
         version: 2.4.1
@@ -603,6 +606,12 @@ packages:
 
   '@popperjs/core@2.11.8':
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
+
+  '@rive-app/canvas-lite@2.21.3':
+    resolution: {integrity: sha512-lXc43geFATL19OnDb7R6jVDJn1gWKBf3vop7d+AMIsA1wRb5hC4bl4XxVEw/y8OuXVG7RpsC4UzA44XxrW1qLA==}
+
+  '@rive-app/canvas@2.21.3':
+    resolution: {integrity: sha512-EHdpwcKt+TindizoeUx+v8X9TV3RsRIgOD+v4IYKjvfqic5VTZsxhBpikQF7tG3AiVCCEwupAfNU71dtKrDMUw==}
 
   '@rollup/pluginutils@5.1.0':
     resolution: {integrity: sha512-XTIWOPPcpvyKI6L1NHo0lFlCyznUEyPmPY1mc3KpPVDYulHSTvyeLNVW00QTLIAFNhR3kYnJTQHeGqU4M3n09g==}
@@ -1458,10 +1467,6 @@ packages:
 
   http-cache-semantics@4.1.1:
     resolution: {integrity: sha512-er295DKPVsV82j5kw1Gjt+ADA/XYHsajl82cGNQG2eyoPkvgUhX+nDIyelzhIWbbsXP39EHcI6l5tYs2FYqYXQ==}
-
-  i@0.3.7:
-    resolution: {integrity: sha512-FYz4wlXgkQwIPqhzC5TdNMLSE5+GS1IIDJZY/1ZiEPCT2S3COUVZeT5OW4BmW4r5LHLQuOosSwsvnroG9GR59Q==}
-    engines: {node: '>=0.4'}
 
   iconv-lite@0.6.3:
     resolution: {integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==}
@@ -3389,6 +3394,10 @@ snapshots:
 
   '@popperjs/core@2.11.8': {}
 
+  '@rive-app/canvas-lite@2.21.3': {}
+
+  '@rive-app/canvas@2.21.3': {}
+
   '@rollup/pluginutils@5.1.0(rollup@4.21.2)':
     dependencies:
       '@types/estree': 1.0.5
@@ -4422,8 +4431,6 @@ snapshots:
       entities: 4.5.0
 
   http-cache-semantics@4.1.1: {}
-
-  i@0.3.7: {}
 
   iconv-lite@0.6.3:
     dependencies:
