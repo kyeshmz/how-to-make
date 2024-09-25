@@ -72,7 +72,9 @@ https://github.com/qbolsee/ArduinoCore-fab-sam
 
 So what I tried to do was connect the ESP32 to the internet, send some OSC packets, and then use the OSC to control the motors.
 
-The motors are currently using the wokwi-a4988 library and board, but the TAs said that this is something that could be made better.
+The motors are currently using the wokwi-a4988 library and board, but the TAs said that this is something that could be made better and handmade without using it.
+
+Maybe I could look into something like microstepping.
 
 https://wokwi.com/projects/409835697200587777
 
@@ -113,3 +115,68 @@ And for those considering the VSCODE extension, I was not able to get it to work
 The datasheet for the ESP32-S3 is [here](https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf)
 
 <OptimizedCover src={datasheet} alt="Datasheet " />
+
+So when they said that we had a bunch of different peripherals, it is alot
+
+This is just a explanation from chatgpt but it was working.
+
+```
+GDMA (General Direct Memory Access): Handles memory-to-memory data transfers, freeing up CPU resources by offloading this task.
+
+System Timer: A hardware timer for system-level tasks such as delays, time measurement, and managing interrupts.
+
+General-purpose Timers: These timers can be used by the user for various purposes like timing events, generating signals, and managing time-sensitive tasks.
+
+SD/MMC Host: An interface for connecting SD (Secure Digital) cards and MMC (MultiMediaCards) for external data storage.
+
+Pulse Counter: Used to count external pulse signals, which is useful for tasks like measuring rotations or other repetitive signals.
+
+World Controller: Typically used for managing different security levels or contexts within the chip, isolating certain processes for security.
+
+SPI0/1 and SPI2/3: SPI (Serial Peripheral Interface) modules for communication with external devices like sensors, displays, and other peripherals.
+
+USB OTG (On-The-Go): Enables USB communication, allowing the chip to function as both a USB device and a USB host.
+
+UART (Universal Asynchronous Receiver-Transmitter): A communication interface commonly used for serial communication with other devices.
+
+RMT (Remote Control): This peripheral is typically used for generating or receiving remote control signals like IR signals.
+
+GPIO (General Purpose Input/Output): A set of configurable pins for general input/output operations, used to interact with external components like buttons, LEDs, or sensors.
+
+RTC GPIO: GPIO pins that are connected to the RTC (Real-Time Clock), enabling control of pins even when the main processor is in a low-power state.
+
+DIG ADC (Digital Analog Converter) and RTC ADC: These ADC modules convert analog signals to digital, with the RTC ADC available during low-power operations.
+
+USB Serial/JTAG: Provides a serial interface for USB communication and JTAG debugging capabilities.
+
+eFuse Controller: Manages the internal eFuse memory, which stores critical information like chip configuration and secure boot parameters.
+
+Main System Watchdog Timers: Ensures that the system doesn't get stuck in a malfunctioning state by resetting the processor if it becomes unresponsive.
+
+RTC Watchdog Timer: Works similarly to the main watchdog, but operates at a lower power level and can reset the chip if necessary.
+
+Super Watchdog: Likely an enhanced version of a regular watchdog timer, providing an additional safety layer for critical system operations.
+
+Touch Sensor: Detects changes in capacitance, allowing the ESP32-S3 to detect touch inputs.
+
+I2S (Inter-IC Sound): A communication protocol used to interface with audio devices, allowing for digital audio input/output.
+
+I2C (Inter-Integrated Circuit): A communication protocol for connecting low-speed peripherals like sensors or display controllers.
+
+LED PWM (Pulse Width Modulation): Used to control the brightness of LEDs by adjusting the duty cycle of the PWM signal.
+
+MCPWM (Motor Control PWM): A specialized PWM controller designed for controlling motors, particularly useful in applications like robotics.
+
+LCD Interface: Provides an interface for connecting and controlling LCD displays.
+
+Camera Interface: Used to connect a camera module, allowing for image capture and video streaming.
+
+Temperature Sensor: Measures the internal temperature of the chip, typically used for monitoring and protection against overheating.
+```
+
+## Other languages
+
+- MicroPython /
+- - Needs something like ESP32 or something strong to run it
+- CircuitPython
+- - Fork of micropython from adafruit
