@@ -1,7 +1,7 @@
 ---
-title: HTMAAA Week 3 / Computer Controlled Cutting
+title: HTMAAA Week 3 / Embedded Programming
 slug: week3
-description: Working with the laser cutter and vinyl cutter
+description: Simulators and working with embedded programming
 category:
   - One
 tags:
@@ -17,6 +17,7 @@ import OptimizedCover from "@components/OptimizedPicture.astro";
 
 import attiny from "../images/week3/attiny.jpg";
 import boards from "../images/week3/boards.jpg";
+import datasheet from "../images/week3/datasheet.jpg";
 import final from "../images/week3/final.jpg";
 import long from "../images/week3/long.jpg";
 
@@ -69,6 +70,10 @@ https://github.com/qbolsee/ArduinoCore-fab-sam
 
 ## Personal Project
 
+So what I tried to do was connect the ESP32 to the internet, send some OSC packets, and then use the OSC to control the motors.
+
+The motors are currently using the wokwi-a4988 library and board, but the TAs said that this is something that could be made better.
+
 https://wokwi.com/projects/409835697200587777
 
 I was working to use OSC with the ESP32 and I found out that it was not possible due to CAPITALISM!!
@@ -104,3 +109,7 @@ But that was the end of my project, unable to compile for the love of the game
 <OptimizedCover src={final} alt="Compilation too long" />
 
 And for those considering the VSCODE extension, I was not able to get it to work and it really seems like a hot mess with the documentation as well.
+
+The datasheet for the ESP32-S3 is [here](https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf)
+
+<OptimizedCover src={datasheet} alt="Datasheet " />
