@@ -9,7 +9,7 @@ const { title, description } = Astro.props;
 
   const r = new Rive({
     src: "https://public.rive.app/community/runtime-files/8999-17412-cat-simple-edit.riv",
-    canvas: document.getElementById("canvas"),
+    canvas: document.getElementById("canvas") as HTMLCanvasElement,
     autoplay: true,
     // artboard: "Arboard", // Optional. If not supplied the default is selected
     stateMachines: ["State Machine 1"],
