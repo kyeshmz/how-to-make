@@ -10,13 +10,14 @@
     "format": "prettier -w .",
     "astro": "astro"
   },
+  
   "dependencies": {
     "@astrojs/check": "^0.9.3",
     "@astrojs/mdx": "^3.1.7",
     "@astrojs/react": "^3.6.2",
     "@astrojs/sitemap": "^3.1.6",
     "@astrojs/tailwind": "^5.1.1",
-    "@iconify-json/tabler": "^1.2.3",
+    "@iconify-json/tabler": "^1.2.4",
     "@rive-app/canvas-lite": "^2.21.3",
 
     "astro": "^4.15.9",
@@ -24,7 +25,7 @@
     "astro-relative-links": "^0.4.0",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
-    "framer-motion": "^11.7.0",
+    "framer-motion": "^11.9.0",
     "preline": "^2.5.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -38,7 +39,7 @@
     "@types/three": "^0.168.0",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.6.6",
+    "prettier-plugin-tailwindcss": "^0.6.8",
     "sharp": "^0.33.5",
     "typescript": "^5.6.2"
   }
