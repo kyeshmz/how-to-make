@@ -13,6 +13,17 @@ coverAlt: AstroVerse-Aliases
 author: Kye
 ---
 
+import OptimizedCover from "@components/OptimizedPicture.astro";
+
+
+import { StlViewer } from "react-stl-viewer";
+import first from "../images/week4/first.jpg";
+import group from "../images/week4/group.jpg";
+import rendering from "../images/week4/rendering.jpg";
+import scan from "../images/week4/scan.jpg";
+import scan2 from "../images/week4/scan2.jpg";
+import time from "../images/week4/time.jpg";
+
 # Assignment
 
 group assignment:
@@ -23,3 +34,161 @@ individual assignment:
 
 - design and 3D print an object (small, few cm3, limited by printer time) that could not be made subtractively
 - 3D scan an object (and optionally print it)
+
+
+We did the famous overhand and 3d printer test that evaluated different parts of the 3D printer calibration.
+
+<OptimizedCover src={group} alt="Group Assignment" />
+
+as you can see, it started to really shirt from 40 degrees and also 55 degrees, so it might have been something wrong with the x axis belt.
+
+
+
+
+.4 mm nozzle
+Prusa Printer MK4
+gyroid make the strbgest
+brim adds surface area
+
+binary gcode ok for new
+matt has paper inside of filament
+great at covering layer lines
+
+svae project saves the project files
+ferret
+
+hold round objects in scan with putty
+
+
+## Individal Assignment
+
+
+### Scanning!
+
+Scanning was actually a bit harder than I imagined, mainly because many of the things that I was choosing were either really reflective, or they didn't have a flat surface, making it really hard to get a good scan.
+
+So we had to improvise, using one of the prints that TA Alfonso had printed out while explaining things about the 3d printer to us.
+
+
+<OptimizedCover src={scan} alt="first print" />
+<OptimizedCover src={scan2} alt="scanning ui" />
+
+Turns out that putting it up on something else worked very well, and it was actually easier to scan the object!
+
+### Printing Gyroid
+
+So because I was kind of used to just regular 3D printing, I decided that I wanted to make something that I could do with code!
+
+I initally started to work out how OpenSCAD would work, by making something simple at first. It also helped me understand a little bit of the calibration behind the 3d printer, as you can see that there was a bit of gaps in the layers in the print.
+
+<OptimizedCover src={first} alt="first print" />
+
+
+
+I stumbled upon this website and this crazy site for all the algorithms that were showcasing how to make the gyroid forms out of functions rather than just modeling the parameters of the width and height of the object.
+[https://xyzdims.com/tag/triply-periodic-minimal-surface/](https://xyzdims.com/tag/triply-periodic-minimal-surface/)
+
+So what I decied to do was make the Fischer-Koch equation into a function, and then use that function to make a 3d model of the Gyroid.
+
+<OptimizedCover src={rendering} alt="Rendering of Gyroid" />
+
+
+
+My file kept breaking because I was rendering something that was a complex calculation, leading the program to hang and crash eveytime that I tried to create a simulation from it.
+It turns out that the resolution of the rendering was too high, so I had to lower it to make it work.
+It also turns out that rendering to the GUI and rendering it out as a mesh were totally different things, and the mesh rendering took waaaaaaay longer.
+
+
+<OptimizedCover src={time} alt="Time for rendering" />
+
+So I decided to make a new file and bake out the renderings each time, making sure that the calculations weren't too complex.
+
+Because OpenScad doesnt support implicit functions, I had to use a for loop to sample all the points in a space to determine if they were part of the object or not.
+
+So if we are making something like a cube, it would be like this:
+
+```
+resolition = 1;
+
+for (x = [-w/2 : resolution : w/2]) {
+    for (y = [-w/2 : resolution : w/2]) {
+        for (z = [-w/2 : resolution : w/2]) {
+            // Evaluate Fischer-Koch equation
+            val = max(abs(x), abs(y), abs(z)) <= w/2;
+            
+            // If the result is close to zero, place a cube
+            if (val) {
+                translate([x, y, z])
+                    cube([resolution, resolution, resolution], center = true);
+            }
+        }
+    }
+}
+
+```
+
+
+We would loop over the X, Y, and Z coordinates, and then evaluate the Fischer-Koch equation for each point. If the result was close to zero, we would place a cube at that point.
+It basically was something like this:
+
+
+```
+
+resolution = 3;  // Step size for discretization
+r = 200;            // Range of x, y, z coordinates
+
+for (x = [-r : resolution : r]) {
+    for (y = [-r : resolution : r]) {
+        for (z = [-r : resolution : r]) {
+            // Evaluate Fischer-Koch equation
+            val = cos(2 * x) * cos(2 * y) * cos(2 * z) - 
+                  sin(2 * x) * sin(2 * y) * sin(2 * z);
+            
+            // If the result is close to zero, place a cube
+            if (abs(val) < 0.1) {
+                translate([x, y, z])
+                    cube([resolution, resolution, resolution], center = true);
+            }
+        }
+    }
+}
+
+```
+
+
+
+
+
+We can see that we are evaluating over 0.1, which is not the most ideal way to figure out the detailed points, but it seems the best way to do it because we can make the resolution the singular parameter in which we can change the resolution of the simulation.
+
+
+Memo for any future people coming in: 
+CTRL - D to comment , CTRL + SHIFT + D to uncomment
+
+
+JSCad could have worked too, but it was really rendering much much slower than OpenScad. Also, it was running all the code in WASM in the browser, so it might be a bit slower than me just running the OpenScad on my computer.
+[https://github.com/jscad/OpenJSCAD.org](https://github.com/jscad/OpenJSCAD.org)
+
+This is the final files that I made for the assignment!
+You can find the files here
+[https://www.thingiverse.com/thing:6782442](https://www.thingiverse.com/thing:6782442)
+
+
+
+// lion image
+https://www.yankodesign.com/images/design_news/2017/05/the-incredible-way-to-3d-print-hair/3d_lion_5.jpg
+
+Hairy Lion STL
+https://www.thingiverse.com/thing:2007221
+
+How to make a 3D printed hairy lion
+https://www.youtube.com/watch?v=TXgrE5z4a5o
+
+Crazy people making brooms out of 3D printers
+
+https://www.youtube.com/watch?v=8jT2U22zWLk
+
+Or making research papers out of this 
+https://www.gierad.com/assets/3dprintedhair/furbrication.pdf
+
+
