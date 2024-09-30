@@ -1,6 +1,7 @@
 ---
 import { SITE_TITLE } from "@consts";
 import { Icon } from "astro-icon/components";
+
 ---
 
 <header class="z-50 flex w-full flex-wrap py-7 md:flex-nowrap md:justify-start">
@@ -29,6 +30,7 @@ import { Icon } from "astro-icon/components";
       >
         <Icon name="tabler:sun-filled" class="icon-base" />
       </button>
+   
       <button
         type="button"
         class="hs-dark-mode hidden items-center gap-x-2 rounded-full px-3 py-2 text-sm text-white hover:bg-white/20 hs-dark-mode-active:inline-flex"
@@ -36,6 +38,7 @@ import { Icon } from "astro-icon/components";
       >
         <Icon name="tabler:moon-filled" class="icon-base" />
       </button>
+      
     </div>
   </nav>
 </header>
