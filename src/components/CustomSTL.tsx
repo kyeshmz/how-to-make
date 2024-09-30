@@ -9,7 +9,6 @@ import { STLLoader } from "three/examples/jsm/loaders/STLLoader";
 export const Model = ({ url }) => {
   const geom = useLoader(STLLoader, url);
 
-  console.log(geom);
 
   const ref = useRef<Mesh>(null);
   const { camera } = useThree();
