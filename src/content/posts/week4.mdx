@@ -137,6 +137,13 @@ We would loop over the X, Y, and Z coordinates, and then evaluate the Fischer-Ko
 It basically was something like this:
 
 
+
+We can see that we are evaluating over 0.1, which is not the most ideal way to figure out the detailed points, but it seems the best way to do it because we can make the resolution the singular parameter in which we can change the resolution of the simulation.
+
+
+Memo for any future people coming in: 
+CTRL - D to comment , CTRL + SHIFT + D to uncomment
+
 ```
 
 resolution = 3;  // Step size for discretization
@@ -172,11 +179,7 @@ https://handandmachine.org/index.php/2021/10/23/extruder-turtle/
 https://www.deannagelosi.com/coding-cups/
 
 
-We can see that we are evaluating over 0.1, which is not the most ideal way to figure out the detailed points, but it seems the best way to do it because we can make the resolution the singular parameter in which we can change the resolution of the simulation.
 
-
-Memo for any future people coming in: 
-CTRL - D to comment , CTRL + SHIFT + D to uncomment
 
 
 JSCad could have worked too, but it was really rendering much much slower than OpenScad. Also, it was running all the code in WASM in the browser, so it might be a bit slower than me just running the OpenScad on my computer.
