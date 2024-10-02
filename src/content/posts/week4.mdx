@@ -13,12 +13,18 @@ coverAlt: AstroVerse-Aliases
 author: Kye
 ---
 
+import CustomVideo from "@components/CustomVideo.astro";
 import OptimizedCover from "@components/OptimizedPicture.astro";
 import STLWrap from "@components/STLWrap.astro";
 
 
+import all from "../images/week4/all.jpg";
+import bamboo from "../images/week4/bamboo.jpg";
+import bambooprint from "../images/week4/bambooprint.jpg";
 import first from "../images/week4/first.jpg";
 import group from "../images/week4/group.jpg";
+import neovius from "../images/week4/neovius.jpg";
+import no_support_koch from "../images/week4/no_support_koch.jpg";
 import rendering from "../images/week4/rendering.jpg";
 import scan from "../images/week4/scan.jpg";
 import scan2 from "../images/week4/scan2.jpg";
@@ -35,6 +41,8 @@ individual assignment:
 - design and 3D print an object (small, few cm3, limited by printer time) that could not be made subtractively
 - 3D scan an object (and optionally print it)
 
+## Group Assignment
+
 
 We did the famous overhand and 3d printer test that evaluated different parts of the 3D printer calibration.
 
@@ -42,7 +50,8 @@ We did the famous overhand and 3d printer test that evaluated different parts of
 
 as you can see, it started to really shirt from 40 degrees and also 55 degrees, so it might have been something wrong with the x axis belt.
 
-<STLWrap url={"https://cdn.thingiverse.com/assets/b5/79/9d/ef/c9/fischer-koch.stl"} />
+
+### Some memos after group assignment   
 
 
 
@@ -104,7 +113,17 @@ It turns out that the resolution of the rendering was too high, so I had to lowe
 It also turns out that rendering to the GUI and rendering it out as a mesh were totally different things, and the mesh rendering took waaaaaaay longer.
 
 
+
 <OptimizedCover src={time} alt="Time for rendering" />
+
+
+<div style="width:100%;height:0;padding-bottom:75%;position:relative;"><iframe src="https://giphy.com/embed/7A4zkWeMXlZqgnTKtJ" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
+
+
+JSCad could have worked too, but it was really rendering much much slower than OpenScad. Also, it was running all the code in WASM in the browser, so it might be a bit slower than me just running the OpenScad on my computer.
+[https://github.com/jscad/OpenJSCAD.org](https://github.com/jscad/OpenJSCAD.org)
+
+
 
 So I decided to make a new file and bake out the renderings each time, making sure that the calculations weren't too complex.
 
@@ -134,7 +153,10 @@ for (x = [-w/2 : resolution : w/2]) {
 
 
 We would loop over the X, Y, and Z coordinates, and then evaluate the Fischer-Koch equation for each point. If the result was close to zero, we would place a cube at that point.
-It basically was something like this:
+It basically became something like this.
+
+<STLWrap url={"https://cdn.thingiverse.com/assets/b5/79/9d/ef/c9/fischer-koch.stl"} />
+
 
 
 
@@ -171,6 +193,58 @@ I also made a neovius one that I made, but I didn't print out due to being scare
 
 <STLWrap url={"https://cdn.thingiverse.com/assets/d7/fe/cf/8d/9b/neovius.stl"} />
 
+Edit:
+After going to office hours, they told me that I could actually use the bamboo and try to make the supports out of the organic type rather than the rectangular default ones.
+This would significantly reduce the amount of supports that I would need to make, and it would also be a lot easier to polish in the end.
+
+I made it so that we only use the supports from the bottom, as well as manually setting the supports that I think I needed, everything could theoretically be done without supports.
+
+<OptimizedCover src={bamboo} alt="bamboo" />
+
+
+
+It turned out well! Some of the manual supports that I added turned out well, but some of the overhangs and the degrees of freedom turned out to be the downfall of the model.
+
+There was also some parts that just spaghettified out, where the curvature of the object and the angle of the actual prints.
+
+I did like the organic tree type supports that were much much easier to work with and take out.
+
+I was so surpised that I could make out the top without supports, and it just made everything so much easier to print.
+
+
+<OptimizedCover src={bambooprint} alt="bambooprint" />
+
+Here is a picture with a better angle
+
+<OptimizedCover src={neovius} alt="neovius" />
+
+I also talked with Alfonso, and he told me maybe there was a possiblity that we didn't need supports at all!
+Oh dear god. What was I doing?
+
+I also asked Alfonso to print one out using no supports in the CBA cause alot was already used up.
+<OptimizedCover src={no_support_koch} alt="no_support_koch" />
+
+And finally, here is all of them in their glory
+
+<OptimizedCover src={all} alt="all" />
+
+This is the final files that I made for the assignment!
+You can find the files here
+[https://www.thingiverse.com/thing:6782442](https://www.thingiverse.com/thing:6782442)
+
+I also made a blender script for taking an STL and rendering it out as a video.
+
+
+
+
+<CustomVideo src="/public/blender-render.mp4" />
+
+```
+
+```
+
+
+
 https://www.bathsheba.com/sculpt/
 
 
@@ -182,12 +256,8 @@ https://www.deannagelosi.com/coding-cups/
 
 
 
-JSCad could have worked too, but it was really rendering much much slower than OpenScad. Also, it was running all the code in WASM in the browser, so it might be a bit slower than me just running the OpenScad on my computer.
-[https://github.com/jscad/OpenJSCAD.org](https://github.com/jscad/OpenJSCAD.org)
 
-This is the final files that I made for the assignment!
-You can find the files here
-[https://www.thingiverse.com/thing:6782442](https://www.thingiverse.com/thing:6782442)
+
 
 
 

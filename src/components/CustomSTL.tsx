@@ -42,7 +42,7 @@ export const Model = ({ url }) => {
 const CustomSTL = ({ url }: { url: string }) => {
   return (
     <div className="h-[400px] w-full">
-      <Canvas camera={{ position: [0, 10, 100] }} shadows>
+      <Canvas camera={{ position: [0, 200, 100] }} shadows>
         <Suspense fallback={null}>
           <Model url={url} />
         </Suspense>
