@@ -18,7 +18,7 @@
     "@astrojs/tailwind": "^5.1.1",
     "@iconify-json/tabler": "^1.2.4",
     "@react-three/drei": "^9.114.0",
-    "@react-three/fiber": "^8.17.8",
+    "@react-three/fiber": "^8.17.9",
     "@rive-app/canvas-lite": "^2.21.3",
     "astro": "^4.15.10",
     "astro-icon": "^1.1.1",
