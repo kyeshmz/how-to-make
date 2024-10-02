@@ -1,6 +1,5 @@
 ---
 import FormattedDate from "@components/FormattedDate.astro";
-import OptimizedCover from "@components/OptimizedPicture.astro";
 import RelatedPostsCard from "@components/RelatedPostsCard.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
@@ -23,13 +22,7 @@ const { Content } = await post.render();
       <div class="prose-h1 text-center">
         <h1>{post.data.title}</h1>
       </div>
-      <div>
-        {
-          post.data.cover && (
-            <OptimizedCover src={post.data.cover} alt={post.data.coverAlt} />
-          )
-        }
-      </div>
+   
       <div>
         <Content />
       </div>

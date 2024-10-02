@@ -3,8 +3,8 @@ import { Canvas, useLoader, useThree } from "@react-three/fiber";
 import { Suspense, useEffect, useRef } from "react";
 import type { Mesh } from "three";
 
-//@ts-ignore
-import { STLLoader } from "three/examples/jsm/loaders/STLLoader";
+
+import { STLLoader } from "three/examples/jsm/loaders/STLLoader.js";
 
 export const Model = ({ url }) => {
   const geom = useLoader(STLLoader, url);

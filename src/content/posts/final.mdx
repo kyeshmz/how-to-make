@@ -16,10 +16,13 @@ author: VV
 
 import CustomVideo from "@components/CustomVideo.astro";
 import OptimizedCover from "@components/OptimizedPicture.astro";
+import { Vimeo } from 'astro-embed';
 
 For my final project, I am thinking about creating a kinetic robot that is a cable robot
+<Vimeo muted params="autoplay=1&muted=1&background=1" id="https://vimeo.com/386246051" />
 
-<CustomVideo src={"https://vimeo.com/386246051"} />
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XqU1mvKcLaA?si=PIv24S9-EeH0toDU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 
 <OptimizedCover
   src={
