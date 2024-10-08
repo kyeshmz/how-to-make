@@ -25,7 +25,7 @@ importers:
         version: 5.1.1(astro@4.15.10(@types/node@22.0.2)(rollup@4.21.2)(typescript@5.6.2))(tailwindcss@3.4.13)
       '@iconify-json/tabler':
         specifier: ^1.2.4
-        version: 1.2.4
+        version: 1.2.5
       '@react-three/drei':
         specifier: ^9.114.0
         version: 9.114.0(@react-three/fiber@8.17.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.169.0))(@types/react@18.3.11)(@types/three@0.169.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.169.0)
@@ -479,8 +479,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@iconify-json/tabler@1.2.4':
-    resolution: {integrity: sha512-8sUrdJQpNaX3ZfJ5Po4hhA6n+JougMZeRg3AFvh5OuAvhZ8hEAOzPHuY8OB96x6cZCqY/j5idsbZWqKDinxRbQ==}
+  '@iconify-json/tabler@1.2.5':
+    resolution: {integrity: sha512-BDDLgDCbJ2btwi6cPmBL04QyPyNmWy6H13ynUAX48xxpxqUuG+hT+yrqL+RCugFimrvuhcecbSfEKnFc0BW1Ng==}
 
   '@iconify/tools@4.0.6':
     resolution: {integrity: sha512-riEQggXVuZNXjRdo+aKT0rkzn2XHslIqat8mdW/oVu5mLmP/95Hi+iaq4keT7WwMD97jsYPXMQ6QMCw0EWpRNw==}
@@ -3595,7 +3595,7 @@ snapshots:
   '@esbuild/win32-x64@0.21.5':
     optional: true
 
-  '@iconify-json/tabler@1.2.4':
+  '@iconify-json/tabler@1.2.5':
     dependencies:
       '@iconify/types': 2.0.0
 
