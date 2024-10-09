@@ -13,6 +13,14 @@ coverAlt: AstroVerse-Aliases
 author: Kye
 ---
 
+import OptimizedCover from "@components/OptimizedPicture.astro";
+
+import board_pcb from "../images/week5/board_pcb.jpg";
+import board_sch from "../images/week5/board_sch.jpg";
+import motor_pcb from "../images/week5/motor_pcb.jpg";
+import motor_sch from "../images/week5/motor_sch.jpg";
+
+
 
 This week was to make a dev board.
 
@@ -20,46 +28,139 @@ I originally wanted to make some sort of POE or Ethernet adapter for my ESP32 be
 
 Talking to some of the TA's, it became apparent that PoE was not the way because of the many loop holes that I would have to go through to make Ethernet work and also the obligations that I would have to do for negotiating what kind of power output I would need.
 
-So here is my initial board, 
+So here is my initial board,
+
+<OptimizedCover src={board_pcb} alt="board_pcb"  />
+
+<OptimizedCover src={board_pcb} alt="board_sch"  />
 
 
 
+I wanted to build upon this as I wanted to make motors turn for my final project, and wanted to know more about what different motors I could use.
+
+I also created a board that I could use to mount a Pololu_Breakout_A4988 so that I could route them with nice secure terminal connectors as well as have a polarized capacitor for voltage spike stabilization and preventing current spikes in the motors
+
+<OptimizedCover src={motor_pcb} alt="board_sch"  />
+
+<OptimizedCover src={motor_sch} alt="board_sch"  />
 
 
 
+## Office hours
 
-As I am looking for my i
+Talking to TA's, it became apparent that there were different kinds of motors that were avaliable to me that would be helpful in the project
 
-
-
-
-Micro stepping isnt really needed for long strides
-Micro stepping is in theroy the sine wave of the electric slots
-
-DC motor can get more speed and can attach encoder 
-stepper motor good because you know which accuracy it has
-
-stepper is convinent, 
-dc motors dump current in and 
-servo motor is dc motor with an encoder and where tell it where its in the right place
+1. DC motors
+2. Stepping motors
 
 
-Stepper driver will do the "stepping " for you
+DC motors can get more speed and some of them have something called an "encoder" on them.
+The encoders basically  provide a mechanism to measure the speed of the rotor, and provide a feedback mechanism for precise speed control. 
+
+It was interesting to see to see sometimes you didnt really need precision. Like why would you not want precision?
+
+Jake also talked about how this could also be measured using the acceleration of the motor, and how this could be used to control the speed of the motor.
+
+[https://github.com/modular-things/modular-things/blob/main/things/stepper-hbridge-xiao/firmware/simple-stepper/motionStateMachine.cpp](https://github.com/modular-things/modular-things/blob/main/things/stepper-hbridge-xiao/firmware/simple-stepper/motionStateMachine.cpp)
+
+```
+void motion_calc_mode_position(void){
+  // figure whence we would need to start stopping, and our current dist  
+  _stopDistance = motion_calc_stopping_distance(_vel, _maxAccel);
+  _dist = _posTarget - _pos;
+
+  // check if we're about to make it... bonk if so, 
+  // units are steps, so epsilon is tiny ! 
+  if(abs(_dist - _delta) < fp_floatToFixed32(0.001F)){
+    _vel = 0;
+    _accel = 0;
+    return;
+  }
+
+  // now we do a buncha cheques 
+  if(_stopDistance >= abs(_dist)){  // we're going to overshoot, 
+    if(_vel <= 0){                  // when -ve vel, 
+      _accel = _maxAccel;           // do +ve accel 
+    } else {                        // when +ve vel, 
+      _accel = -_maxAccel;          // do -ve accel 
+    }
+  } else {                          // we're not overshooting, 
+    if(_dist > 0){                  // if delta is positive,
+      _accel = _maxAccel;           // go forwards, 
+    } else {                        // if it's negative 
+      _accel = -_maxAccel;          // go backwards... 
+    }
+  }
+
+  // using our chosen accel, integrate velocity from previous: 
+  _vel += fp_mult32x32(_accel, _delT); 
+
+  // cap our _vel based on maximum rates: 
+  if(_vel >= _maxVelocity){
+    _accel = 0;
+    _vel = _maxVelocity;
+  } else if (_vel <= -_maxVelocity){
+    _accel = 0;
+    _vel = -_maxVelocity;
+  }
+}
+```
+
+There seems to be a trade off with using the DC motors and the Stepper Motors.
+
+DC Motors
+Pro
+- torque
+- faster
+- simple in terms that it just dumps current into it
+
+Con
+- Need encoder
+- need to write code to track where you are
+- more complicated (for me it seems)
 
 
+Stepper Motors
+Pro
+- relative precision
 
-what is a transistor
+Con
+- speed
+- can miss a step 
+- ramp up to how speed works, not immediate speed in a sense
+- can be bottlenecked because you have to send how many steps it needs to go to reach a certain point rahter than just dumping in current into the motor. This means that it requires decent processing power over DC
 
 
-DC has to do before 
-Stepper before
-
+Nevertheless, he said that this was a good library that I could look into
 https://www.airspayce.com/mikem/arduino/AccelStepper/
+
+and that if he was using a stepping motor, he would use a stepping driver rather than a h bridge
+but it could be possible to use on and that they also have a double h bridge component
+
+He also recommended
+- 
+
+
+
+### Microstepping 
+I was looking into the [hackaday](https://hackaday.com/2016/08/29/how-accurate-is-microstepping-really/) piece that was talking about microstepping, and I didn't understand it quite well.
+
+But it seems like the main case that I understood from the TAs talking about it and what it entails was something like this:
+- Microstepping is a software case where you are able to control the inbetween of different phases 
+- Microstepping increases the resolution of the movement that we are trying to do, but it is something that is seen in more small movements rather than in large scale movements (though this varies because of the equipment being used etc.)
+- Micro stepping is in theory, the sine wave of the electric slots
+
+
+
+
+
+
+
+
 
 
 Step point
 h bridge for stepper is more accurate because you know the direction 
-bottlenecked because you have to send it som nay times
 
 
 modular things stepper hbridge xiao
