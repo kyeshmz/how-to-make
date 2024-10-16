@@ -1,0 +1,61 @@
+---
+title: HTMAAA Week 6 / Electronics Production
+slug: week6
+description: Working PCBs and Kicad
+category:
+  - One
+tags:
+  - Laser Cutter
+  - Vinyl Cutter
+pubDate: 2023-09-01
+cover: https://images.unsplash.com/photo-1611505982706-9ebc79e5d3f1?q=80&w=1960&h=1102&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+coverAlt: AstroVerse-Aliases
+author: Kye
+---
+
+import OptimizedCover from "@components/OptimizedPicture.astro";
+import group1 from '../images/week6/group1.jpeg';
+import group2 from '../images/week6/group2.jpeg';
+import group3 from '../images/week6/group3.jpeg';
+import noprobe from "../images/week6/noprobe.jpg";
+import power from "../images/week6/power.jpg";
+import power_pcb from "../images/week6/power_pcb.jpg";
+import solder from "../images/week6/solder.jpg";
+
+
+This week was to make a microdev board.
+
+I used kicad to create my PCB board and it turned out okay!
+
+<OptimizedCover src={solder} alt="solder"  />
+
+It turns out that if you dont use the probing of the Carvera that it makes it harder to make the overall probing of the board
+<OptimizedCover src={noprobe} alt="noprobe"  />
+
+
+I also made a small power board for my PCB that would be used to add some 12V DC power to my motor board.
+
+<OptimizedCover src={power} alt="board_sch"  />
+
+
+It turned out to not be that bad, and actually works when I use it on a bread board.
+Its much better than having to solder another male pin wire to test it out.
+
+<OptimizedCover src={power_pcb} alt="board_sch"  />
+
+
+
+The group assignment was done without me because some complications with the scheduling, but my group did a good job looking at the design rules for the inhouse PCB process. It was especially easy to do because of the Carvera which had a way to switch autotools, making the process for testing out the different tool widths much more easier.
+
+<OptimizedCover src={group1} alt="board_sch"  />
+<OptimizedCover src={group2} alt="board_sch"  />
+<OptimizedCover src={group3} alt="board_sch"  />
+
+
+
+
+
+Put both the edge cut and hole cut in the 
+
+black white black
+black for the parts you want to drill white for the inside and black again on outside
