@@ -24,6 +24,9 @@ jobs:
 
       - name: Copy gitlab-ci.yml
         run: cp .gitlab-ci.yml public/
+        
+      - name: Copy gitlab-ci.yml
+        run: cp .gitlab-ci.yml dist/
 
       # Push the public directory contents to GitLab repository
       - name: Deploy public folder to GitLab
