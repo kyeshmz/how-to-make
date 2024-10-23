@@ -17,6 +17,7 @@ import OptimizedCover from "@components/OptimizedPicture.astro";
 import group1 from '../images/week6/group1.jpeg';
 import group2 from '../images/week6/group2.jpeg';
 import group3 from '../images/week6/group3.jpeg';
+import merge from '../images/week6/merge.jpg';
 import noprobe from "../images/week6/noprobe.jpg";
 import power from "../images/week6/power.jpg";
 import power_pcb from "../images/week6/power_pcb.jpg";
@@ -53,9 +54,15 @@ The group assignment was done without me because some complications with the sch
 
 
 
+Extra credit:
 
 
-Put both the edge cut and hole cut in the 
+I fixed the gerber2img that quentin built, as alot of creating the board was really configuring with different software. 
+[https://quentinbolsee.pages.cba.mit.edu/gerber2img/](https://quentinbolsee.pages.cba.mit.edu/gerber2img/)
 
-black white black
-black for the parts you want to drill white for the inside and black again on outside
+Before the fix, you need to manual add and flip the colors for the drill holes and such, which was a pain because you had to select your holes, inverse them, etc.
+
+So I added a couple of lines of code that checked if a layer was a drill layer, and just flip colors around!
+
+<OptimizedCover src={merge} alt="merge"  />
+
