@@ -39,8 +39,8 @@ importers:
         specifier: ^4.16.5
         version: 4.16.6(@types/node@22.0.2)(rollup@4.24.0)(typescript@5.6.2)
       astro-embed:
-        specifier: ^0.7.4
-        version: 0.7.4(astro@4.16.6(@types/node@22.0.2)(rollup@4.24.0)(typescript@5.6.2))
+        specifier: ^0.8.0
+        version: 0.8.0(astro@4.16.6(@types/node@22.0.2)(rollup@4.24.0)(typescript@5.6.2))
       astro-icon:
         specifier: ^1.1.1
         version: 1.1.1
@@ -118,6 +118,11 @@ packages:
 
   '@antfu/utils@0.7.10':
     resolution: {integrity: sha512-+562v9k4aI80m1+VuMHehNJWLOFjBnXn3tdOitzD0il5b7smkSBal4+a3oKiQTbrwMmN/TBUMDvbdoWDehgOww==}
+
+  '@astro-community/astro-embed-baseline-status@0.1.1':
+    resolution: {integrity: sha512-BiTQf4EP3SjMb/U5YN984BiGoGQNfc/lsJG0PosvNjUn5Q6+GjkSs77RjW3mQXOo64+sC3A0iOgdw2rlOmmjcQ==}
+    peerDependencies:
+      astro: ^4.0.0-beta || ^5.0.0-beta
 
   '@astro-community/astro-embed-integration@0.7.2':
     resolution: {integrity: sha512-R5eyiA01pj400skp6sJY4t01oXtTY+Huv2uR4eWUagaPgOOadu135+UkPXo38+LgZ5voYzZkaGwfTaZj4R0AFg==}
@@ -990,9 +995,6 @@ packages:
   '@types/three@0.169.0':
     resolution: {integrity: sha512-oan7qCgJBt03wIaK+4xPWclYRPG9wzcg7Z2f5T8xYTNEF95kh0t0lklxLLYBDo7gQiGLYzE6iF4ta7nXF2bcsw==}
 
-  '@types/unist@2.0.10':
-    resolution: {integrity: sha512-IfYcSBWE3hLpBg8+X2SEa8LVkJdJEkT2Ese2aaLs3ptGdVtABxndrMaxuFlQ1qdFf9Q5rDvDpxI3WwgvKFAsQA==}
-
   '@types/unist@2.0.11':
     resolution: {integrity: sha512-CmBKiL6NNo/OqgmMn95Fk9Whlp2mtvIv+KNpQKN2F4SjvrEesubTRWGYSg+BnWZOnlCaSTU1sMpsBOzgbYhnsA==}
 
@@ -1128,8 +1130,8 @@ packages:
     peerDependencies:
       astro: ^2.0.0 || ^3.0.0-beta || ^4.0.0-beta
 
-  astro-embed@0.7.4:
-    resolution: {integrity: sha512-meDmEpmwu1wcz1i1KT4yAPJhydq/C4iyh1Pn7sepSbtXF85C05nJoE0cTDJHf0cwM4zMoYTYDluqFIQIfsdhHA==}
+  astro-embed@0.8.0:
+    resolution: {integrity: sha512-zG7SjRKo2TT4LsZLQfttf+Yb9OJ2oty+/qj7SZ9RPPAo0olfbWgoXkAdrDHBJyvVMss9GCgCunIp/kqQ32t9ZA==}
     peerDependencies:
       astro: ^2.0.0 || ^3.0.0-beta || ^4.0.0-beta || ^5.0.0-beta
 
@@ -3289,13 +3291,18 @@ snapshots:
 
   '@antfu/utils@0.7.10': {}
 
+  '@astro-community/astro-embed-baseline-status@0.1.1(astro@4.16.6(@types/node@22.0.2)(rollup@4.24.0)(typescript@5.6.2))':
+    dependencies:
+      '@astro-community/astro-embed-utils': 0.1.3
+      astro: 4.16.6(@types/node@22.0.2)(rollup@4.24.0)(typescript@5.6.2)
+
   '@astro-community/astro-embed-integration@0.7.2(astro@4.16.6(@types/node@22.0.2)(rollup@4.24.0)(typescript@5.6.2))':
     dependencies:
       '@astro-community/astro-embed-link-preview': 0.2.2
       '@astro-community/astro-embed-twitter': 0.5.6(astro@4.16.6(@types/node@22.0.2)(rollup@4.24.0)(typescript@5.6.2))
       '@astro-community/astro-embed-vimeo': 0.3.10(astro@4.16.6(@types/node@22.0.2)(rollup@4.24.0)(typescript@5.6.2))
       '@astro-community/astro-embed-youtube': 0.5.5(astro@4.16.6(@types/node@22.0.2)(rollup@4.24.0)(typescript@5.6.2))
-      '@types/unist': 2.0.10
+      '@types/unist': 2.0.11
       astro: 4.16.6(@types/node@22.0.2)(rollup@4.24.0)(typescript@5.6.2)
       astro-auto-import: 0.4.2(astro@4.16.6(@types/node@22.0.2)(rollup@4.24.0)(typescript@5.6.2))
       unist-util-select: 4.0.3
@@ -4296,8 +4303,6 @@ snapshots:
       fflate: 0.8.2
       meshoptimizer: 0.18.1
 
-  '@types/unist@2.0.10': {}
-
   '@types/unist@2.0.11': {}
 
   '@types/unist@3.0.2': {}
@@ -4383,9 +4388,9 @@ snapshots:
 
   '@webgpu/types@0.1.44': {}
 
-  acorn-jsx@5.3.2(acorn@8.12.1):
+  acorn-jsx@5.3.2(acorn@8.13.0):
     dependencies:
-      acorn: 8.12.1
+      acorn: 8.13.0
 
   acorn@8.12.1: {}
 
@@ -4443,8 +4448,9 @@ snapshots:
       acorn: 8.13.0
       astro: 4.16.6(@types/node@22.0.2)(rollup@4.24.0)(typescript@5.6.2)
 
-  astro-embed@0.7.4(astro@4.16.6(@types/node@22.0.2)(rollup@4.24.0)(typescript@5.6.2)):
+  astro-embed@0.8.0(astro@4.16.6(@types/node@22.0.2)(rollup@4.24.0)(typescript@5.6.2)):
     dependencies:
+      '@astro-community/astro-embed-baseline-status': 0.1.1(astro@4.16.6(@types/node@22.0.2)(rollup@4.24.0)(typescript@5.6.2))
       '@astro-community/astro-embed-integration': 0.7.2(astro@4.16.6(@types/node@22.0.2)(rollup@4.24.0)(typescript@5.6.2))
       '@astro-community/astro-embed-link-preview': 0.2.2
       '@astro-community/astro-embed-twitter': 0.5.6(astro@4.16.6(@types/node@22.0.2)(rollup@4.24.0)(typescript@5.6.2))
@@ -5103,7 +5109,7 @@ snapshots:
   hast-util-from-parse5@8.0.1:
     dependencies:
       '@types/hast': 3.0.4
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
       devlop: 1.1.0
       hastscript: 8.0.0
       property-information: 6.5.0
@@ -5174,7 +5180,7 @@ snapshots:
     dependencies:
       '@types/estree': 1.0.5
       '@types/hast': 3.0.4
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
       comma-separated-tokens: 2.0.3
       devlop: 1.1.0
       estree-util-is-identifier-name: 3.0.0
@@ -5541,7 +5547,7 @@ snapshots:
       '@types/estree-jsx': 1.0.5
       '@types/hast': 3.0.4
       '@types/mdast': 4.0.4
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
       ccount: 2.0.1
       devlop: 1.1.0
       mdast-util-from-markdown: 2.0.1
@@ -5738,8 +5744,8 @@ snapshots:
 
   micromark-extension-mdxjs@3.0.0:
     dependencies:
-      acorn: 8.12.1
-      acorn-jsx: 5.3.2(acorn@8.12.1)
+      acorn: 8.13.0
+      acorn-jsx: 5.3.2(acorn@8.13.0)
       micromark-extension-mdx-expression: 3.0.0
       micromark-extension-mdx-jsx: 3.0.0
       micromark-extension-mdx-md: 2.0.0
@@ -6703,11 +6709,11 @@ snapshots:
 
   unist-util-position-from-estree@2.0.0:
     dependencies:
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
 
   unist-util-position@5.0.0:
     dependencies:
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
 
   unist-util-remove-position@5.0.0:
     dependencies:
@@ -6716,14 +6722,14 @@ snapshots:
 
   unist-util-select@4.0.3:
     dependencies:
-      '@types/unist': 2.0.10
+      '@types/unist': 2.0.11
       css-selector-parser: 1.4.1
       nth-check: 2.1.1
       zwitch: 2.0.4
 
   unist-util-stringify-position@4.0.0:
     dependencies:
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
 
   unist-util-visit-children@3.0.0:
     dependencies:
@@ -6764,7 +6770,7 @@ snapshots:
 
   vfile-location@5.0.3:
     dependencies:
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
       vfile: 6.0.3
 
   vfile-message@4.0.2:
