@@ -16,17 +16,17 @@
     "@astrojs/react": "^3.6.2",
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^5.1.2",
-    "@iconify-json/tabler": "^1.2.5",
-    "@react-three/drei": "^9.114.0",
+    "@iconify-json/tabler": "^1.2.6",
+    "@react-three/drei": "^9.115.0",
     "@react-three/fiber": "^8.17.10",
-    "@rive-app/canvas-lite": "^2.21.6",
-    "astro": "^4.16.5",
-    "astro-embed": "^0.7.4",
+    "@rive-app/canvas-lite": "^2.21.7",
+    "astro": "^4.16.7",
+    "astro-embed": "^0.8.0",
     "astro-icon": "^1.1.1",
     "astro-relative-links": "^0.4.0",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
-    "framer-motion": "^11.11.9",
+    "framer-motion": "^11.11.10",
     "preline": "^2.5.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -43,6 +43,6 @@
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.8",
     "sharp": "^0.33.5",
-    "typescript": "^5.6.2"
+    "typescript": "^5.6.3"
   }
 }
