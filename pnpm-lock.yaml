@@ -33,8 +33,8 @@ importers:
         specifier: ^8.17.10
         version: 8.17.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.169.0)
       '@rive-app/canvas-lite':
-        specifier: ^2.21.7
-        version: 2.22.0
+        specifier: ^2.23.2
+        version: 2.23.2
       astro:
         specifier: ^4.16.7
         version: 4.16.7(@types/node@22.0.2)(rollup@4.24.0)(typescript@5.6.3)
@@ -783,8 +783,8 @@ packages:
       react-native:
         optional: true
 
-  '@rive-app/canvas-lite@2.22.0':
-    resolution: {integrity: sha512-HQyZyEdZ3y47LZTf88UVUVxJyCVH7gwgGZmyDs570XGOjkMKcwWIITmeyMapRhqp9k7edqsG1ONEITXtzXFlmg==}
+  '@rive-app/canvas-lite@2.23.2':
+    resolution: {integrity: sha512-9pNNm641UHOODFlpadEHoLwlvi5jdv3U6CtSTv8CXffiklc5eel8ZtTT1wlNeuLaHR4KdLwaAdcAOZ0mgb69bg==}
 
   '@rollup/pluginutils@5.1.2':
     resolution: {integrity: sha512-/FIdS3PyZ39bjZlwqFnWqCOVnW7o963LtKMwQOD0NhQqw22gSr2YY1afu3FxRip4ZCZNsD5jq6Aaz6QV3D/Njw==}
@@ -4088,7 +4088,7 @@ snapshots:
     optionalDependencies:
       react-dom: 18.3.1(react@18.3.1)
 
-  '@rive-app/canvas-lite@2.22.0': {}
+  '@rive-app/canvas-lite@2.23.2': {}
 
   '@rollup/pluginutils@5.1.2(rollup@4.24.0)':
     dependencies:
