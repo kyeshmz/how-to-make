@@ -1,7 +1,12 @@
 ---
+type Props = {
+  src: string;
+}
+
+let props = Astro.props as Props;
 
 ---
 
-<video class="w-full h-auto" height="400" controls autoplay loop muted >
-  <source src={Astro.props.src} type="video/mp4" />
+<video class="w-full h-auto" height="400" {...props} controls autoplay loop muted >
+
 </video>

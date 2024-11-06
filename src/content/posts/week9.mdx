@@ -15,44 +15,51 @@ author: Kye
 
 
 
-import OptimizedCover from "@components/OptimizedPicture.astro"
-import end from "../images/week8/end.jpg"
-import first from "../images/week8/first.jpg"
-import kicad from "../images/week8/kicad.jpg"
-import vinyl from "../images/week8/vinyl.jpg"
+import CustomVideo from "@components/CustomVideo.astro";
+import OptimizedCover from "@components/OptimizedPicture.astro";
 
 
-
-This week was alot of getting used to the flow of the PCB making process, as well as fiddling with different PCB machines.
-
-Turns out that the Carvera PCB milling machine would really shut down on me, and I tried to fix it by myself, which I really shouldn't have done. It ended up beign a lot of work and having to get new firmware for the machine, but hopefully now, we have a backup of the firmware.
-
-My goals this week were to use the capactive sensors so that I could touch a certain place and trigger some kind of action. Therefore, I decided on making a capactive touch sensor board that would look like a gamepad.
-
-The final product looked like this
-
-<OptimizedCover src={end} alt="end"  />
-
-I originally started testing with a normal copper metal touchpad at first, using some of the copper cutables that would be avaliable for the cutting machine.  After I got the initial idea of it working, I saw some articles online, mainly some instructables [https://www.instructables.com/ArduinoESP32-Capacitive-Touch-Sensor/](https://www.instructables.com/ArduinoESP32-Capacitive-Touch-Sensor/) of how to make a capacitive touch sensor, and I decided to try and make one of those.
-
-<OptimizedCover src={first} alt="first"  />
+import debug from '../images/week9/debug.jpg';
+import group from '../images/week9/group.jpg';
+import milling from '../images/week9/milling.jpg';
+import osc from '../images/week9/osc.mp4';
 
 
-For a initial prototype it was good, and I was ready to move to a PCB, and I also noticed that some of the people who made it before also recommended to use a resistor to make it so that the capactive would only go off if I was to touch the gamepad, rather than just around the board.
+I turned my PCB board around because I was using a bunch of headers and I wanted to make sure that I didn't have to think about turning the orientation of the board around, it was just much harder when you needed to think about flipping everything.
 
-I was also going to want to just strip all the non copper parts away from the board, which I thought I could do by making a zone mask of a ground plane or something in kicad, but Alfonso stepped in to show me that this could be done by changing some of the values in the MODS file, mainly the offset number and changing it to be 0.
+<OptimizedCover src={milling} alt="milling"  />
+
+The worst thing happened when I was trying to make it work, the flipped board didnt work, but with the same code, the inverse board worked. I deduced that it must be a hardware issue, so I reached out to the TAs who had helped me late in to the hours of the night, showcasing some debugging techiniques, while also bashing on how I wasn't doing the due diligence on some of the ways I was treating my board.
+
+<OptimizedCover src={debug} alt="debug"  />
+
+It turns out that my pin numbers were wrong, and I was using the wrong pins, so I had to change them to the correct pins.
+I was using the pin number for digital pins, but it turns out that you needed to use the GPIO pins.
+
+There also was a bunch of red flags including:
+- wiring my power cables so that they were tidy
+- using the correct jumper wires
+- using the correct voltage pass through for my stepper driver
+- using the correct software setup for my code (actually selecting esp32c6)
+- the different pins between esp32c6 and esp32s3
+- my powersupply was kind of dying
 
 
-<OptimizedCover src={kicad} alt="kicad"  />
+I finally got it working with me being able to send out OSC through Touchdesigner and being able to receive it through the ESP32 and move the motors.
 
-but some complications occurred with the PCB machines, so I decided to make another rough prototype with the vinyl cuttter downstairs. 
+The motors and the motor driver became exteremely hot, which was another problem but I hope to manage it through heatsinking.
 
-<OptimizedCover src={vinyl} alt="vinyl"  />
-However, I was having some issues with the copper being too hard to cut, and I really should have tweaked with the settings, but I decided against it and went back to PCB making.
-
-## Group project
+I also made a small power board for my PCB that would be used to add some 12V DC power to my motor board.
 
 
-## Good kicad defaults
+<CustomVideo src={"/osc.mp4"} />
 
+
+# Group project
+
+We looked into Marcello's robots and saw that he was using a dual battery pack to power his robots, and we were ablt to look into how much power he was using. It turns out that the power fluctuated when he was idle, only powering one of the motors, and when he was active, he would power both motors.
+
+The power delivery system was really handy because you could see just how much power was being actually pulled, and I always had this thought that power was something that was being delivered, not pulled.
+
+<OptimizedCover src={group} alt="group"  />
 
