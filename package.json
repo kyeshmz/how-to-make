@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build && cp ./agreement.md ./public/agreement.md && cp .gitlab-ci.yml ./public/.gitlab-ci.yml",
+    "build": "astro check && astro build && cp ./agreement.md ./dist/agreement.md && cp .gitlab-ci.yml ./dist/.gitlab-ci.yml",
     "preview": "astro preview",
     "format": "prettier -w .",
     "astro": "astro"
