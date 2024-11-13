@@ -1,0 +1,78 @@
+---
+title: HTMAAA Week 10 / Make something big!
+slug: week9
+description: Working with Shopbot and CNCs
+category:
+  - One
+tags:
+  - Laser Cutter
+  - Vinyl Cutter
+pubDate: 2023-09-01
+cover: https://plus.unsplash.com/premium_photo-1661832010486-c8a301117ebb?q=80&w=1960&h=1102&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+coverAlt: AstroVerse-Aliases
+author: Kye
+---
+
+
+import CustomVideo from "@components/CustomVideo.astro";
+import OptimizedCover from "@components/OptimizedPicture.astro";
+import cut from '../images/week10/cut.jpg';
+import final from '../images/week10/final.jpg';
+import fusion_chair from '../images/week10/fusion_chair.jpg';
+import grasshopper from '../images/week10/grasshopper.jpg';
+import group from '../images/week10/group.jpg';
+import metal from '../images/week10/metal.jpg';
+import rhino from '../images/week10/rhino.jpg';
+import scale_fusion from '../images/week10/scale_fusion.jpg';
+
+I made it out of the [Crane](https://www.food4rhino.com/en/app/crane) solver created by Kai Suto from UTokyo Tachi Lab and made it easy to create some custom origami type furniture.
+
+
+It was hard to use the solver because for everything you need to manually set the constraints for all the components. For example, if you were making a table or a chair, you would set the chair legs and the table lengs to be the same length, and you would also make them sure that they pointed towards a certain direction, and not be able to deviate from that direction.
+
+Also, you started from the actual collapsed position of the origami, so you would have to think about how the 2D would be in a 3D space and figure out if it would actually work or not.
+
+Because of this, the grasshopper was just a big spaghetti and it was just messy.
+
+
+<OptimizedCover src={grasshopper} alt="crane"  />
+
+But the great thing about crane was that it was able to make the joints to align them together and make them actually work!
+
+<OptimizedCover src={rhino} alt="rhino"  />
+
+
+I then cut them using the shopbot 
+
+<OptimizedCover src={cut} alt="cut"  />
+
+Though our group project was looking at how the saftey works and how the joints were to be made, the joints that I made were really stiff and needed alot of sanding.
+
+<OptimizedCover src={group} alt="group"  />
+
+I also realized in between that I couldnt make the actual chair without having to fortify in some way because many of the stuff were made out of 45 deg angles, making it so that you couldnt glue the two pieces together and you could not realistically make the table.
+
+So I did what I had to do, the unspeakable metal joint challenge.
+
+<OptimizedCover src={metal} alt="metal"  />
+
+and made the once folded out one piece of wood into a table
+
+<OptimizedCover src={final} alt="final"  />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

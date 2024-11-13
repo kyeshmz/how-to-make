@@ -10,7 +10,7 @@ https://ui.aceternity.com/components
 https://fab.cba.mit.edu/classes/MAS.863/
 
 for hardware
-https://fabacademy.org/2022/labs/kamplintfort/students/leen-nijim/assignments/five.html
+https://fabacademy.org/2022/labs/kamplintfort/students/leen-nijim/assignments/seven.html
 
 #!/bin/bash
 
