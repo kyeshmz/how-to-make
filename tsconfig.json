@@ -1,7 +1,9 @@
 {
-  "extends": "astro/tsconfigs/base",
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "types": ["astro/client"],
+    "types": ["bun-types"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
     "strictNullChecks": true,
     "baseUrl": ".",
     "paths": {
@@ -10,7 +12,6 @@
       "@utils/*": ["src/utils/*"],
       "@consts": ["src/consts.ts"]
     },
-    "jsx": "preserve",
-    "jsxImportSource": "react"
+ 
   }
 }
