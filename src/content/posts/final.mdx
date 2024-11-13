@@ -8,7 +8,7 @@ tags:
   - Tailwind
   - Astro
   - Jamstack
-pubDate: 2023-09-01
+pubDate: 2024-12-25
 cover: https://images.unsplash.com/photo-1516557070061-c3d1653fa646??w=1960&h=1102&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmxhY2t8ZW58MHwwfDB8fHwy
 coverAlt: AstroVerse-Aliases
 author: VV
@@ -17,6 +17,9 @@ author: VV
 import CustomVideo from "@components/CustomVideo.astro";
 import OptimizedCover from "@components/OptimizedPicture.astro";
 import { Vimeo } from 'astro-embed';
+import schem_tmc2209 from '../images/final/schem_tmc2209.jpg';
+import wire_tmc2209 from '../images/final/wire_tmc2209.jpg';
+
 
 For my final project, I am thinking about creating a kinetic robot that is a cable robot
 
@@ -32,7 +35,7 @@ This is from the art group called artcom
 
 ### Artcom  RGB|CMY Kinetic 2015
 
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=ZQuofLtN8s4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ZQuofLtN8s4?si=w1Zn8TGRHVxor0DG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 ### Koriobots from Madeline Gannon
@@ -158,3 +161,23 @@ DC Motors
 + some require much less mantinence because they dont have brushes (brushless dc motors)
 - harder to manipulate the exact postiioning
 
+
+# Nov 12th
+
+I made my design for the new TMC2209 Stepstick stepper driver and I made 2 for them
+
+<OptimizedCover
+  src={
+    schem_tmc2209
+  }
+  alt="Group assignment"
+/>
+
+<OptimizedCover
+  src={
+    wire_tmc2209
+  }
+  alt="Group assignment"
+/>
+
+It doesnt seem to all have turned out quite what I wanted it to be
