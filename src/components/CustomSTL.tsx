@@ -6,7 +6,7 @@ import type { Mesh } from "three";
 
 import { STLLoader } from "three/examples/jsm/loaders/STLLoader.js";
 
-export const Model = ({ url }) => {
+export const Model = ({ url }: { url: string }) => {
   const geom = useLoader(STLLoader, url);
 
 
