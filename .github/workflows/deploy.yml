@@ -19,8 +19,13 @@ jobs:
         run: bun install
 
       # Build the Astro site
-      - name: Build Astro site
-        run: bun run build
+      - name: Install, build, and upload your site output
+        uses: withastro/action@v2
+        with:
+          node-version: 20
+          package-manager: bun@latest
+      # - name: Build Astro site
+      #   run: bun run build
 
       - name: Copy gitlab-ci.yml
         run: cp .gitlab-ci.yml public/
