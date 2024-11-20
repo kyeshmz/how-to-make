@@ -12,3 +12,334 @@ cover: https://images.unsplash.com/photo-1524514587686-e2909d726e9b?q=80&w=1960&
 coverAlt: AstroVerse-Aliases
 author: Kye
 ---
+
+## The idea
+
+The idea was to build a coin flipping machine that would be able to flip a coin, and then cross off decisions from a list.
+
+
+### My role
+
+My role:
+I was basically hot glue. I helped out with the EE team to help configure the software for us to work with Jakes system and to integrate with the front end.
+
+In the end, I ended up building a new server that handled the EE stuff / helped 3D print alot of the parts to make the machine like the corners and  stoppers for the 2020 aluminum extrusion to m3 holders.
+
+I also made sure that integrations were working smoothly across teams with Jessica, and really just being at the space to help people out with their software.
+
+
+At first it was really working with Toni to figure out how we can make parts of the machine work like the way we wanted
+- making the servo move the pen up and down at a certain degrees
+- making the x and y motors move the machine
+- making the solonoid work and trigger at a certain timing 
+
+There was a bunch of work to make it happen and mishaps along the way, but with grit and being able to debug things really fast, it ended up working out in the end
+
+
+
+### The code from EE
+
+
+As such, here is the code that I made with Toni for making the machine work with code that Jessica ran from the front end.
+
+
+```python 
+import asyncio
+import traceback
+
+import numpy as np
+
+from maxl.core import MAXLCore, MAXLCoreConfig, MAXLInterpolationIntervals
+from maxl.kinematics.scara_arm import ScaraArm
+from maxl.one_dof import MAXLOneDOF
+from maxl.queue_planner import MAXLQueueConfig, MAXLQueuePlanner
+from osap.bootstrap.auto_usb_serial.auto_usb_serial import AutoUSBPorts
+from osap.osap import OSAP
+from proxies.deadbugger_samd21_proxy import DeadbuggerSamd21Proxy
+from proxies.hbridge_samd21_proxy import HbridgeSamd21Proxy
+from proxies.maxl_stepper_proxy import MAXLStepperProxy
+from proxies.router_teensy_4p1_proxy import RouterTeensy4p1Proxy
+from svg.svg_tools import scale_and_process_svg
+
+# we have a 1:6 reduction on these,
+# and we want to think about *degrees* at the actuator,
+
+motor_rpu = (1/40)
+# motor_accels = 100
+# motor_max_rates = 45
+
+xy_accels = 500
+xy_max_rates = 10
+
+z_accel = 1000
+z_max_rate = 1000
+
+motor_current_scale = 0.35
+
+machine_extents = [100, 100]
+jog_rate = 80
+
+
+current_x = 0
+current_y = 0
+
+HOME_X = 0
+HOME_Y = 0
+
+osap = None
+router = None
+motor_a = None
+motor_b = None
+deadbugger = None
+maxl = None
+planner = Non
+
+
+# given exact coords to go to and current position, caclulate xy offset needed to actually move machine
+async def calculate_movement_amount(absolute_x,absolute_y):
+    return [absolute_x-current_x, absolute_y-current_y]
+
+
+
+async def raise_pen():
+    global deadbugger
+    print("raising pen")
+    #  all the way up for the pen
+    await deadbugger.write_servo_us(1600)
+    # sleep for a second
+    await asyncio.sleep(1)
+
+
+async def lower_pen():
+    global deadbugger
+    print("lowering pen")
+    # lowers the pen all the way to the bottom
+    await deadbugger.write_servo_us(0)
+    await asyncio.sleep(1)
+
+
+
+async def make_flip_once():
+    global hbridge
+    await hbridge.pulse_bridge(4.5, 100)
+
+
+# moves by relative position
+async def move_xy( x: float, y: float):
+    global planner, current_x, current_y, jog_rate
+    xyz = [x,y,0]
+
+    # update current position
+    current_x += x
+    current_y += y
+    print("MOVING BY")
+    print(xyz)
+    # await planner.goto_via_queue(xyz, jog_rate)
+    await planner.goto_and_await(xyz,jog_rate)
+
+
+async def move_home(jog_rate: float):
+    global planner, current_x, current_y
+
+    home_offset = await calculate_movement_amount(HOME_X,HOME_Y)
+
+    current_x += home_offset[0]
+    current_y += home_offset[1]
+
+    # Z does nothing but adding nonetheless...
+    xyz = home_offset + [0]
+    await  planner.goto_and_await(xyz,jog_rate)
+
+
+e
+
+
+async def init_motors(osap: OSAP):
+    global motor_a
+    global motor_b
+
+    print("... setup actuators")
+    motor_a = MAXLStepperProxy(osap, "motor_b")
+    motor_b = MAXLStepperProxy(osap, "motor_d")
+    await motor_a.begin()
+    await motor_a.set_current_scale(motor_current_scale)
+    await motor_b.begin()
+    await motor_b.set_current_scale(motor_current_scale)
+
+async def init_deadbugger(osap: OSAP):
+    global deadbugger
+    print("---------------------------------- setting up deadbugger ...")
+    deadbugger = DeadbuggerSamd21Proxy(osap, "deadbugger")
+    await deadbugger.begin()
+    await deadbugger.use_maxl(False)
+    print(".... done setting up debugger")
+
+
+async def init_hbridge(osap: OSAP):
+    global hbridge
+    print("---------------------------------- setting up hbrdige ...")
+    hbridge = HbridgeSamd21Proxy(osap, "hbridge")
+    await hbridge.begin()
+    print(".... done setting up hbridge")
+
+
+async def init_system():
+    global osap
+    global router
+    global motor_a
+    global motor_b
+    global deadbugger
+    global hbridge
+    global maxl
+    global planner
+
+    print("---------------------------------- setup networking ...")
+    osap = OSAP("py_coinflipper")
+    loop = asyncio.get_event_loop()
+    loop.create_task(osap.runtime.run())
+
+    usbserial_links = AutoUSBPorts().ports
+    for usbserial in usbserial_links:
+        osap.link(usbserial)
+
+    await asyncio.sleep(0.25)
+
+
+    print("---------------------------------- collect system ...")
+    system_map = await osap.netrunner.update_map()
+    system_map.print()
+
+    print("... collecting router, powering remotes")
+    router = RouterTeensy4p1Proxy(osap, "router")
+    await router.begin()
+    await router.set5_v_switch(True)
+    await asyncio.sleep(0.25)
+    # the deadbugger actually requires we power it up before we can chat
+    # due to dubious power routing choices by jake
+    await router.set_pd_request_voltage(15)
+    await router.set_vcc_switch(True)
+    while True:
+        vcc_avail = await router.read_available_vcc()
+        print(F"having vcc... {vcc_avail:.2}")
+        if vcc_avail > 14.0:
+            print("power set, waiting for life...")
+            await asyncio.sleep(2)
+            break
+        else:
+            await asyncio.sleep(0.25)
+
+    # now re-collect
+    system_map = await osap.netrunner.update_map()
+    system_map.print()
+
+
+    print("---------------------------------- wait for clocks to settle ...")
+    await osap.netrunner.await_time_settle(print_updates=True, await_spread_epsilon_us=2000)
+    print("... setup actuators")
+    await init_motors(osap)
+    await init_deadbugger(osap)
+    await init_hbridge(osap)
+
+
+    print("---------------------------------- maxl-ifying")
+    maxl = MAXLCore(osap, MAXLCoreConfig(
+        actuators=[motor_a, motor_b, deadbugger],
+        interpolation_interval=MAXLInterpolationIntervals.INTERVAL_16384,
+        twin_to_real_gap_ms=150,
+        print_point_transmits=False,
+        history_length_ms=2500
+    ))
+
+    planner = MAXLQueuePlanner(maxl, MAXLQueueConfig(
+        axes_count=3, inertial_axes_count=3,
+        max_accels=[500, 500, 1000], max_vels=[100,100,2000],
+        lookahead_queue_length=128
+    ))
+
+    # the interior axis is 'a' - distal is 'b'
+    def littleguy_graph(time: int):
+        # first get pts from the planner,
+        # which is thinking in cartesian ways...
+        axes_pt = planner.on_new_control_point(time)
+
+        # finally, add scalars:
+        actu_a = axes_pt[0]*motor_rpu
+        actu_b = axes_pt[1]*motor_rpu
+
+        # have mapped... 2000: all the way down, 1000: all up
+        servo = 2000 - axes_pt[2] * 1000
+        # 1 = one revolution
+        return [actu_a, actu_b, servo]
+
+    maxl.use_graph(littleguy_graph)
+    print("---------------------------------- startup")
+    print("... starting MAXL")
+    await maxl.begin()
+
+
+    print("---------------------------------- run the job!")
+
+
+async def turn_off():
+    global planner
+    global router
+    print("... flush")
+    # await planner.goto_via_queue([50,10,z_up], jog_rate)
+    await planner.flush_queue()
+
+    # servo takes a minute
+    await asyncio.sleep(1)
+
+    print("... power off")
+    await router.set_vcc_switch(False)
+
+    print("---------------------------------- END of main()")
+    if maxl is not None:
+        await maxl.shutdown()
+   
+import asyncio
+
+from fastapi import FastAPI
+
+from async_funcs import (init_system, lower_pen, make_flip_once, move_home,
+                         move_xy, raise_pen, turn_off)
+
+app = FastAPI()
+
+@app.get("/startup")
+async def startup_event():
+    await init_system()
+    return {"status": "success", "message": "Startup"}
+
+@app.get("/move_xy")
+async def move_xy_endpoint(x: float, y: float):
+    await move_xy(x, y)
+    return {"status": "success", "message": f"Moved to x: {x}, y: {y}"}
+
+@app.get("/move_home")
+async def move_home_endpoint(jog_rate: float):
+    await move_home(jog_rate)
+    return {"status": "success", "message": "Moved to home position"}
+
+@app.get("/raise_pen")
+async def raise_pen_endpoint():
+    await raise_pen()
+    return {"status": "success", "message": "Pen raised"}
+
+@app.get("/lower_pen")
+async def lower_pen_endpoint():
+    await lower_pen()
+    return {"status": "success", "message": "Pen lowered"}
+
+@app.get("/make_flip_once")
+async def make_flip_once_endpoint():
+    await make_flip_once()
+    return {"status": "success", "message": "Flip made once"}
+
+@app.get("/shutdown")
+async def shutdown_event():
+    await turn_off()
+    return {"status": "success", "message": "Shutdown"}
+
+print('running server!!')
+```
