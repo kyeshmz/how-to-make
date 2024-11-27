@@ -25,3 +25,6 @@ done
 
 
 ffmpeg -i input_video -vcodec libx264 -b:v 1000k -vf scale=-2:1080 -an output_video.mp4
+
+
+change mods cut depth to 0.15
