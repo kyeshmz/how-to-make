@@ -20,9 +20,9 @@ jobs:
 
       # Build the Astro site
       - name: Install, build, and upload your site output
-        uses: withastro/action@v2
+        uses: withastro/action@v3
         with:
-          node-version: 20
+          node-version: 22
           package-manager: bun@latest
       # - name: Build Astro site
       #   run: bun run build
