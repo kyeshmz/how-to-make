@@ -17,8 +17,14 @@ author: VV
 import CustomVideo from "@components/CustomVideo.astro";
 import OptimizedCover from "@components/OptimizedPicture.astro";
 import { Vimeo } from 'astro-embed';
+import devboard_11_27 from '../images/final/devboard_11_27.jpg';
+import module_drv8825_11_27_pcb from '../images/final/module_drv8825_11_27_pcb.jpg';
+import module_drv8825_11_27 from '../images/final/moudle_drv8825_11_27.jpg';
+import pico_devboard_11_27 from '../images/final/pico_devboard_11_27.jpg';
+import pico_devboard_11_27_pcb from '../images/final/pico_devboard_11_27_pcb.jpg';
 import schem_tmc2209 from '../images/final/schem_tmc2209.jpg';
 import wire_tmc2209 from '../images/final/wire_tmc2209.jpg';
+
 
 
 For my final project, I am thinking about creating a kinetic robot that is a cable robot
@@ -220,6 +226,24 @@ tx needs to be protected by
 https://www.printables.com/model/237994-nema-23-stepper-motor-spool
 
 https://www.omc-stepperonline.com/nema-17-bipolar-59ncm-84oz-in-2a-42x48mm-4-wires-w-1m-cable-connector-17hs19-2004s1?search=17hs19-
+
+
+
+Nov 26th
+
+I made the designs for the modular type board that I would make, but it kinda failed because I didn't account for the PCB for the 
+
+Here were the designs that I made
+<OptimizedCover src={module_drv8825_11_27} alt="module_drv8825_11_27"  />
+<OptimizedCover src={module_drv8825_11_27_pcb} alt="module_drv8825_11_27_pcb"  />
+<OptimizedCover src={pico_devboard_11_27} alt="pico_devboard_11_27"  />
+<OptimizedCover src={pico_devboard_11_27_pcb} alt="pico_devboard_11_27_pcb"  /> 
+
+It turns out that the PCB didn't have enough clearance for the stepper drivers, but everything else for the integration seemed fine
+
+<OptimizedCover src={devboard_11_27} alt="devboard_11_27"  />
+
+
 
 
 
