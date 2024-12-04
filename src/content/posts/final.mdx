@@ -17,9 +17,12 @@ author: VV
 import CustomVideo from "@components/CustomVideo.astro";
 import OptimizedCover from "@components/OptimizedPicture.astro";
 import { Vimeo } from 'astro-embed';
+import cad_2020 from '../images/final/cad_2020.jpg';
 import devboard_11_27 from '../images/final/devboard_11_27.jpg';
 import module_drv8825_11_27 from '../images/final/module_drv8825_11_27.jpg';
 import module_drv8825_11_27_pcb from '../images/final/module_drv8825_11_27_pcb.jpg';
+import new_multiboard from '../images/final/new_multiboard.jpg';
+import nikhil from '../images/final/nikhil.jpg';
 import pico_all_11_26 from '../images/final/pico_all_11_26.jpg';
 import pico_all_11_26_pcb from "../images/final/pico_all_11_26_pcb.jpg";
 import pico_devboard_11_27 from '../images/final/pico_devboard_11_27.jpg';
@@ -231,10 +234,6 @@ https://www.omc-stepperonline.com/nema-17-bipolar-59ncm-84oz-in-2a-42x48mm-4-wir
 
 
 
-
-
-
-
 Nov 25th
 
 I was designing a PCB that would work with all the stepper drivers that I wanted, and kind of into one really big board.
@@ -276,10 +275,40 @@ Just noticed that I had a GND that wasn't connected to the board, so redoing it
 
 <OptimizedCover src={pico_map} alt="pico_map"  />
 
-Dec 3 
-I got some stepper motors from quentin and I got some feedback from Nikhil how I should be making my parts
+Nov 28-29
 
-I had some 
+Through a bunch of trial and error, I was able to make a multi driver board that would be able to control a bunch of stepper motor at the same time
+
+
+<OptimizedCover src={new_multiboard} alt="new_multiboard"  />
+
+
+I checked that all the stepper motors were working with each driver being connected to a different port of the board.
+
+
+Dec 2
+I got some stepper motors from quentin and I got some feedback from Nikhil how I should be making my parts
+He told me if I was going with the way with Brass Tapered Heat-Set Inserts for Plastic  [https://www.mcmaster.com/94180A331/](https://www.mcmaster.com/94180A331/) that I should be making the back part insertable from the otherside so that it is more sturdy, but this didnt work at all.
+
+
+<OptimizedCover src={nikhil} alt="nikhil"  />
+
+
+
+Dec 3
+I was able to try and create some of the parts that I needed for my board, which some changes in what I needed to do
+It was a  good call to be able to fillet the parts of the extruded parts of the slab to the board, which made everything much more sturdy
+
+<OptimizedCover src={cad_2020} alt="cad_2020"  />
+
+But DAMN MY STEPPER MOTORS ARE NOT WORKING with all of them connected, one at a time works and I DONT KNOW WHY
+
+
+
+
+
+
+
 
 
 Some of the feedback that I got for what I could do for the middle of the hanging could be works like 
@@ -289,11 +318,6 @@ prefixes
 harder better faster stronger
 ```
 
-
-
-
-This is the link for the Brass Tapered Heat-Set Inserts for Plastic 
-[https://www.mcmaster.com/94180A331/](https://www.mcmaster.com/94180A331/)
 
 
 - [ ] What does it do?
