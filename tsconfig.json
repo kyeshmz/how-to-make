@@ -6,12 +6,15 @@
     "jsxImportSource": "react",
     "strictNullChecks": true,
     "baseUrl": ".",
+  
     "paths": {
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],
       "@utils/*": ["src/utils/*"],
       "@consts": ["src/consts.ts"]
     },
- 
-  }
+
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "build", "files"],
 }

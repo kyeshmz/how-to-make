@@ -13,6 +13,14 @@ export default defineConfig({
   site: "https://fab.cba.mit.edu/classes/863.24/people/KyeShimizu",
   base: "",
   trailingSlash: "ignore",
+  srcDir: "./src",
+  vite: {
+    server: {
+      watch: {
+        ignored: ["./files/**/*"], // HERE
+      },
+    },
+  },
   prefetch: {
     prefetchAll: true,
     defaultStrategy: "viewport",
