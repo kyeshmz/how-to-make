@@ -24,9 +24,9 @@ import pico_all_11_26 from '../images/final/pico_all_11_26.jpg';
 import pico_all_11_26_pcb from "../images/final/pico_all_11_26_pcb.jpg";
 import pico_devboard_11_27 from '../images/final/pico_devboard_11_27.jpg';
 import pico_devboard_11_27_pcb from '../images/final/pico_devboard_11_27_pcb.jpg';
+import pico_map from '../images/final/pico_map.jpg';
 import schem_tmc2209 from '../images/final/schem_tmc2209.jpg';
 import wire_tmc2209 from '../images/final/wire_tmc2209.jpg';
-
 
 
 For my final project, I am thinking about creating a kinetic robot that is a cable robot
@@ -230,6 +230,11 @@ https://www.printables.com/model/237994-nema-23-stepper-motor-spool
 https://www.omc-stepperonline.com/nema-17-bipolar-59ncm-84oz-in-2a-42x48mm-4-wires-w-1m-cable-connector-17hs19-2004s1?search=17hs19-
 
 
+
+
+
+
+
 Nov 25th
 
 I was designing a PCB that would work with all the stepper drivers that I wanted, and kind of into one really big board.
@@ -237,6 +242,8 @@ The Carvera really was not like all the path traces, and kept shedding around wh
 
 <OptimizedCover src={pico_all_11_26} alt="pico_all_11_26"  />
 <OptimizedCover src={pico_all_11_26_pcb} alt="pico_all_11_26_pcb"  />
+
+I really thought this was the way, and I think I actually talked to Alfonso about it, but thinking about it, if any of the parts didn't work, I would have to do the whole thing again, which would be a hassle so I decided to make it into a more modular style board.
 
 
 
@@ -256,9 +263,65 @@ It turns out that the PCB didn't have enough clearance for the stepper drivers, 
 
 I need to test out if the board actually works, I haven't really used the PICO before.
 
+I talked to some people that know a bit more than me, and I might just make a big boy motherboard type thing rather than small modular type systems.
+
+
+Nov 27th
+
+
+add a capacitor to my board
+
+check if the stepper motor works by shorting one of the cables together, 1A to 1B and if there its harder to turn, its working
+Just noticed that I had a GND that wasn't connected to the board, so redoing it
+
+<OptimizedCover src={pico_map} alt="pico_map"  />
+
+Dec 3 
+I got some stepper motors from quentin and I got some feedback from Nikhil how I should be making my parts
+
+I had some 
+
+
+Some of the feedback that I got for what I could do for the middle of the hanging could be works like 
+
+```
+prefixes 
+harder better faster stronger
+```
 
 
 
+
+This is the link for the Brass Tapered Heat-Set Inserts for Plastic 
+[https://www.mcmaster.com/94180A331/](https://www.mcmaster.com/94180A331/)
+
+
+- [ ] What does it do?
+- [ ] Who's done what beforehand?
+- [ ] What sources did you use?
+- [ ] What did you design?
+- [ ] What materials and components were used?
+- [ ] Where did they come from?
+- [ ] How much did they cost?
+- [ ] What parts and systems were made?
+- [ ] What tools and processes were used?
+- [ ] What questions were answered?
+- [ ] What worked? What didn't?
+- [ ] How was it evaluated?
+- [ ] What are the implications?
+- [ ] Prepare a summary slide and a one minute video showing its conception, construction, and operation
+- [ ] Your project should incorporate
+- - [ ] 2D and 3D design, 
+- - [ ] additive and subtractive fabrication processes
+- - [ ] electronics design and production
+- - [ ] embedded microcontroller design
+- - [ ] interfacing
+- - [x] programming 
+- - [ ] system integration
+- - [ ] packaging
+- [ ] Where possible, you should make rather than buy the parts of your project
+- [ ] Projects can be separate or joint, but need to show individual mastery of the skills, and be independently operable
+- [ ] Present your final project, weekly and group assignments, and documentation
 
 
 
