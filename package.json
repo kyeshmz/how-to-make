@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "test":"astro build --verbose",
-    "build": "astro check && astro build && cp ./agreement.md ./dist/agreement.md && cp .gitlab-ci.yml ./dist/.gitlab-ci.yml",
+    "build": "astro check && astro build --verbose && cp ./agreement.md ./dist/agreement.md && cp .gitlab-ci.yml ./dist/.gitlab-ci.yml",
     "preview": "astro preview",
     "format": "prettier -w .",
     "astro": "astro"
