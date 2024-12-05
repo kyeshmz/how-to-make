@@ -10,10 +10,10 @@ importers:
     dependencies:
       '@electron-toolkit/preload':
         specifier: ^3.0.1
-        version: 3.0.1(electron@31.7.3)
+        version: 3.0.1(electron@31.7.5)
       '@electron-toolkit/utils':
         specifier: ^3.0.0
-        version: 3.0.0(electron@31.7.3)
+        version: 3.0.0(electron@31.7.5)
       '@tweakpane/core':
         specifier: ^2.0.5
         version: 2.0.5
@@ -65,7 +65,7 @@ importers:
         version: 4.3.3(vite@5.4.10(@types/node@20.17.6))
       electron:
         specifier: ^31.0.2
-        version: 31.7.3
+        version: 31.7.5
       electron-builder:
         specifier: ^24.13.3
         version: 24.13.3(electron-builder-squirrel-windows@24.13.3)
@@ -1145,8 +1145,8 @@ packages:
       '@swc/core':
         optional: true
 
-  electron@31.7.3:
-    resolution: {integrity: sha512-pZ3ChhQL5THjagmhVqgb2dsePDIyUKSalv8bARziTSTk1pLbtJRja0OLIuuHktl387vRcDJZ0x4YWzI52x/TlQ==}
+  electron@31.7.5:
+    resolution: {integrity: sha512-8zFzVJdhxTRmoPcRiKkEmPW0bJHAUsTQJwEX2YJ8X0BVFIJLwSvHkSlpCjEExVbNCAk+gHnkIYX+2OyCXrRwHQ==}
     engines: {node: '>= 12.20.55'}
     hasBin: true
 
@@ -2714,17 +2714,17 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@electron-toolkit/preload@3.0.1(electron@31.7.3)':
+  '@electron-toolkit/preload@3.0.1(electron@31.7.5)':
     dependencies:
-      electron: 31.7.3
+      electron: 31.7.5
 
   '@electron-toolkit/tsconfig@1.0.1(@types/node@20.17.6)':
     dependencies:
       '@types/node': 20.17.6
 
-  '@electron-toolkit/utils@3.0.0(electron@31.7.3)':
+  '@electron-toolkit/utils@3.0.0(electron@31.7.5)':
     dependencies:
-      electron: 31.7.3
+      electron: 31.7.5
 
   '@electron/asar@3.2.16':
     dependencies:
@@ -3749,7 +3749,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  electron@31.7.3:
+  electron@31.7.5:
     dependencies:
       '@electron/get': 2.0.3
       '@types/node': 20.17.6
