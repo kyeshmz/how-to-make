@@ -28,3 +28,5 @@ ffmpeg -i input_video -vcodec libx264 -b:v 1000k -vf scale=-2:1080 -an output_vi
 
 
 change mods cut depth to 0.15
+
+for video in ./*.mp4; do ffmpeg -i "$video" -vcodec libx264 -b:v 1000k -vf scale=-2:1080 -an "${video%.*}_reformatted.mp4"; done
