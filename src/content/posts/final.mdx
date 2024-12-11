@@ -17,8 +17,12 @@ author: VV
 import CustomVideo from "@components/CustomVideo.astro";
 import OptimizedCover from "@components/OptimizedPicture.astro";
 import { Vimeo } from 'astro-embed';
+import alan_debug from "../images/final/alan_debug.jpg";
+import alan_math from '../images/final/alan_math.jpg';
 import cad_2020 from '../images/final/cad_2020.jpg';
+import char from '../images/final/char.jpg';
 import devboard_11_27 from '../images/final/devboard_11_27.jpg';
+import draft_workbench from "../images/final/draft_workbench.jpg";
 import module_drv8825_11_27 from '../images/final/module_drv8825_11_27.jpg';
 import module_drv8825_11_27_pcb from '../images/final/module_drv8825_11_27_pcb.jpg';
 import new_multiboard from '../images/final/new_multiboard.jpg';
@@ -308,15 +312,39 @@ But DAMN MY STEPPER MOTORS ARE NOT WORKING with all of them connected, one at a 
 https://www.thingiverse.com/thing:1073567/files
 
 
-
-
-
 Some of the feedback that I got for what I could do for the middle of the hanging could be works like 
 
 ```
 prefixes 
 harder better faster stronger
+
+
+
+
 ```
+
+
+Dec 4th
+
+I got alan to help me out to figure out why my board wasnt working, it turned out to be a electricity problem and when I was trying to send over 3A over it, one of the stepper motors would trigger a circuit breaker that would stop some of the motors from working.
+<OptimizedCover src={alan_debug} alt="alan_debug"  />
+
+We ended up not knowing why something like that would happen, but we just adjusted some of the voltage to make it work.
+<OptimizedCover src={alan_math} alt="alan_math"  />
+
+
+Dec 10th
+
+I talked with Char about my problems with the program to coordinate system conversion, but it wasnt working as well as I thought
+<OptimizedCover src={char} alt="char"  />
+
+
+I talked with Nikihil for quite a bit of time, and he talked to me about how my coordinate system was off. 
+It was basically doing a coordinate system that was relative, rather than more absolute. 
+
+
+<OptimizedCover src={draft_workbench} alt="draft_workbench"  />
+
 
 
 
