@@ -1,60 +1,14 @@
-import { electronApp, is, optimizer } from '@electron-toolkit/utils'
-import { app, BrowserWindow, ipcMain, shell } from 'electron'
+import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
+import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 
-import { Client, Message, Server } from 'node-osc'
-const oscServer = new Server(3333, '0.0.0.0', () => {
-  console.log('OSC Server is listening')
-})
-
-const oscClient = new Client('192.168.41.60', 54321)
-
-function createWindow(): void {
-  oscServer.on('listening', () => {
-    console.log('OSC Server is listening.')
-  })
-
-  ipcMain.on('/reset', (event) => {
-    console.log('/reset')
-    oscClient.send(new Message('/reset'), () => {})
-  })
-
-  ipcMain.on('/step/1', (event, mouseX) => {
-    console.log('/step/1', mouseX)
-    const message = new Message('/step/1', mouseX)
-    oscClient.send(message, () => {})
-  })
-
-  ipcMain.on('/step/2', (event, mouseX) => {
-    console.log('/step/2', mouseX)
-
-    const message = new Message('/step/2', mouseX)
-    oscClient.send(message, () => {})
-  })
-
-  ipcMain.on('ping', () => {
-    const message = new Message('/step/2', 100)
-    oscClient.send(message, () => {})
-  })
-
-  oscServer.on('message', function (msg) {
-    console.log(`Message: ${msg}`)
-    const address = (msg as Array<string>).at(0)
-    const message = (msg as Array<string>).at(1)
-    console.log('message', message)
-    // mainWindow.webContents.send('fortune', 1)
-    if (address === '/fortune') {
-      mainWindow.webContents.send('fortune', 'bbbbbb')
-    }
-  })
-
+function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 1280,
-    height: 720,
+    width: 900,
+    height: 670,
     show: false,
-
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
@@ -62,13 +16,10 @@ function createWindow(): void {
       sandbox: false
     }
   })
-  mainWindow.setAspectRatio(16 / 9)
 
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
   })
-
-  mainWindow.webContents.openDevTools()
 
   mainWindow.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url)
@@ -99,6 +50,7 @@ app.whenReady().then(() => {
   })
 
   // IPC test
+  ipcMain.on('ping', () => console.log('pong'))
 
   createWindow()
 

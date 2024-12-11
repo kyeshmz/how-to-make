@@ -14,11 +14,7 @@ function App(): JSX.Element {
     }
   }, [])
 
-  return (
-    <div className="">
-      <div ref={sketchRef} className="w-full"></div>
-    </div>
-  )
+  return <div ref={sketchRef} className="h-screen m-0" id="canvas-parent"></div>
 }
 
 export default App
