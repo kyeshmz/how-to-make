@@ -48,7 +48,7 @@ const sketch = (p: p5): void => {
   let boundsHeight = 0
   let isInside = false
   let previousDiagonalInPixelM1 = 0
-  let previousDiagonalInPixelM2 = 0
+  let previousDiagonalInPixelM2 = 500
 
   let isRecording = false
   let movements: Movement[] = []
@@ -68,14 +68,19 @@ const sketch = (p: p5): void => {
 
   const motorSize = 10
   const motorPairDistance = 300
+
+  const m1Posx = 0
+  const m1Posy = 0
+  const m2Posx = 775
+  const m2Posy = 0
   let pane: Pane
 
   function calculateM1(currentX: number, currentY: number): number {
-    const pixelPhysicalFactor = 500 / 775 // pixels to mm factor
+    const pixelPhysicalFactor = 1 // pixels to mm factor
 
     // 70mm for 360 or 200 steps
     // 0.19mm per step
-    const oneResolution = 200 / 70
+    const oneResolution = 200 / 58.87
 
     const diagonalPixel = Math.sqrt(Math.pow(currentX, 2) + Math.pow(currentY, 2))
 
@@ -97,7 +102,7 @@ const sketch = (p: p5): void => {
     // const numerator = Math.sqrt(Math.pow(inputX - 50, 2) + Math.pow(inputY, 2))
     // const result = (numerator * coeff) / divisor
 
-    return motorSteps * -1
+    return motorSteps
   }
 
   function calculateM2(currentX: number, currentY: number): number {
@@ -122,25 +127,18 @@ const sketch = (p: p5): void => {
 
     // return motorSteps
 
-    const pixelPhysicalFactor = 500 / 775 // pixels to mm factor
+    const pixelPhysicalFactor = 1
 
     // 70mm for 360 or 200 steps
     // 0.19mm per step
-    const oneResolution = 200 / 70
 
-    const offX = 500
-    const offY = 0
+    // steps / mm JOHNNY APPROVED BY COOPERATE
+    const oneResolution = 200 / 58.87
 
-    const targetDiagonalInPixel = Math.sqrt(
-      Math.pow(offX - currentX, 2) + Math.pow(offY - currentY, 2)
-    )
+    const targetDiagonalInPixel = Math.sqrt(Math.pow(m2Posx - currentX, 2) + Math.pow(currentY, 2))
     const delta = targetDiagonalInPixel - previousDiagonalInPixelM2
-    console.log('delta', delta)
-    console.log('targetDiagonalInPixelM2', targetDiagonalInPixel)
-    console.log('previousBefore', previousDiagonalInPixelM2)
 
     previousDiagonalInPixelM2 = targetDiagonalInPixel
-    console.log('previousAfter', previousDiagonalInPixelM2)
     // const targetDiagonalInPixels = Math.sqrt(Math.pow(targetX, 2) + Math.pow(targetY, 2))
 
     const physicalDiag = pixelPhysicalFactor * delta
@@ -172,11 +170,11 @@ const sketch = (p: p5): void => {
     // canvas.addClass('border-2 border-black border-solid')
 
     // Initialize the circle center to the middle of the canvas
-    circleCenterX = p.width / 2
-    circleCenterY = p.height / 2
+    circleCenterX = 50
+    circleCenterY = 50
 
     // Create the safety boundary rectangle
-    boundsWidth = p.width / 2
+    boundsWidth = 745
     console.log('boundsWidth', boundsWidth)
     boundsHeight = boundsWidth
     boundsX = p.width / 2 - boundsWidth / 2
@@ -208,6 +206,7 @@ const sketch = (p: p5): void => {
       params.motorPair1.record = false
       pane.refresh()
     }
+
     if (params.reset) {
       window.electron.ipcRenderer.send('/reset')
     }
@@ -268,8 +267,9 @@ const sketch = (p: p5): void => {
     // p.line(firstRectX1 + motorSize / 2, rectY + motorSize / 2, centerX, centerY)
     // p.line(firstRectX2 + motorSize / 2, rectY + motorSize / 2, centerX, centerY)
     // this is for the lines from the motors
-    // p.line(firstRectX1 + motorSize / 2, rectY + motorSize / 2, circleCenterX, circleCenterY)
-    // p.line(firstRectX2 + motorSize / 2, rectY + motorSize / 2, circleCenterX, circleCenterY)
+
+    p.line(50 + motorSize / 2, rectY + motorSize / 2, circleCenterX, circleCenterY)
+    p.line(500 + 50 - motorSize / 2, rectY + motorSize / 2, circleCenterX, circleCenterY)
 
     // Playback logic
     if (isPlayingBack && playbackIndex < movements.length) {
@@ -324,6 +324,12 @@ const sketch = (p: p5): void => {
 
       const motor1 = calculateM1(p.mouseX, p.mouseY)
       const motor2 = calculateM2(p.mouseX, p.mouseY)
+      // const motor1 = 322
+      // const motor2 = 0
+
+      // const motor1 = -400
+      // const motor2 = -400
+
       // const motor2 = calculateM1(p.mouseX, p.mouseY)
       // console.log('motor1DiagInPixels', motor1DiagInPixels)
       console.log('motor1', motor1)

@@ -8,7 +8,7 @@ const oscServer = new Server(3333, '0.0.0.0', () => {
   console.log('OSC Server is listening')
 })
 
-const oscClient = new Client('192.168.41.60', 54321)
+const oscClient = new Client('192.168.41.38', 54321)
 
 function createWindow(): void {
   oscServer.on('listening', () => {
