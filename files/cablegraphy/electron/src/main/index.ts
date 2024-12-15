@@ -8,7 +8,7 @@ const oscServer = new Server(3333, '0.0.0.0', () => {
   console.log('OSC Server is listening')
 })
 
-const oscClient = new Client('192.168.41.38', 54321)
+const oscClient = new Client('192.168.41.205', 54321)
 
 function createWindow(): void {
   oscServer.on('listening', () => {
@@ -30,6 +30,20 @@ function createWindow(): void {
     console.log('/step/2', mouseX)
 
     const message = new Message('/step/2', mouseX)
+    oscClient.send(message, () => {})
+  })
+
+  ipcMain.on('/step/3', (event, mouseX) => {
+    console.log('/step/3', mouseX)
+
+    const message = new Message('/step/3', mouseX)
+    oscClient.send(message, () => {})
+  })
+
+  ipcMain.on('/step/4', (event, mouseX) => {
+    console.log('/step/4', mouseX)
+
+    const message = new Message('/step/4', mouseX)
     oscClient.send(message, () => {})
   })
 

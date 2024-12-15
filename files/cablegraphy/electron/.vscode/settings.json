@@ -7,5 +7,10 @@
   },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.associations": {
+    "ostream": "cpp",
+    "print": "cpp",
+    "ratio": "cpp"
   }
 }

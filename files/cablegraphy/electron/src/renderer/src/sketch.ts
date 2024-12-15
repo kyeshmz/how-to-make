@@ -1,19 +1,3 @@
-// import p5 from 'p5'
-
-// const sketch = (p: p5): void => {
-//   p.setup = (): void => {
-//     p.createCanvas(400, 400)
-//   }
-
-//   p.draw = (): void => {
-//     p.background(200)
-//     p.fill(100)
-//     p.ellipse(p.width / 2, p.height / 2, 50, 50)
-//   }
-// }
-
-// export default sketch
-
 import p5 from 'p5'
 import { Pane } from 'tweakpane'
 import { params, setupTweakpane } from './gui'
@@ -21,8 +5,6 @@ import { params, setupTweakpane } from './gui'
 const OSC_MESSAGES = {
   STOP: '/stop'
 } as const
-
-type OSC_MESSAGES_TYPE = (typeof OSC_MESSAGES)[keyof typeof OSC_MESSAGES]
 
 interface Movement {
   x: number
@@ -47,60 +29,40 @@ const sketch = (p: p5): void => {
   let boundsWidth = 0
   let boundsHeight = 0
   let isInside = false
+
+  const m2Posx = 720
   let previousDiagonalInPixelM1 = 0
-  let previousDiagonalInPixelM2 = 500
+  let previousDiagonalInPixelM2 = m2Posx
 
   let isRecording = false
   let movements: Movement[] = []
   let playbackIndex = 0
   let isPlayingBack = false
 
-  let previousX = 250
-  let previousY = 250
-
   let circleCenterX = 0
   let circleCenterY = 0
 
   const offset = 50
 
-  // this is the cm in 78
-  const motor1Length = 78
-
   const motorSize = 10
-  const motorPairDistance = 300
 
-  const m1Posx = 0
-  const m1Posy = 0
-  const m2Posx = 775
-  const m2Posy = 0
   let pane: Pane
 
-  function calculateM1(currentX: number, currentY: number): number {
-    const pixelPhysicalFactor = 1 // pixels to mm factor
+  const microSteps = 32
 
+  function calculateM1(currentX: number, currentY: number): number {
     // 70mm for 360 or 200 steps
     // 0.19mm per step
     const oneResolution = 200 / 58.87
 
     const diagonalPixel = Math.sqrt(Math.pow(currentX, 2) + Math.pow(currentY, 2))
 
-    const delta = previousDiagonalInPixelM1 - diagonalPixel
+    const physicalDiag = previousDiagonalInPixelM1 - diagonalPixel
 
     previousDiagonalInPixelM1 = diagonalPixel
     console.log('previousDiagonalInPixelM1', previousDiagonalInPixelM1)
 
-    // const targetDiagonalInPixels = Math.sqrt(Math.pow(targetX, 2) + Math.pow(targetY, 2))
-
-    const physicalDiag = delta * pixelPhysicalFactor
-
-    // const physicalDiag = (currentDiagonalInPixels - targetDiagonalInPixels) * pixelPhysicalFactor
-
-    const motorSteps = physicalDiag * oneResolution
-
-    // const coeff = 6.44
-    // const divisor = 0.3
-    // const numerator = Math.sqrt(Math.pow(inputX - 50, 2) + Math.pow(inputY, 2))
-    // const result = (numerator * coeff) / divisor
+    const motorSteps = physicalDiag * oneResolution * microSteps
 
     return motorSteps
   }
@@ -108,26 +70,7 @@ const sketch = (p: p5): void => {
   function calculateM2(currentX: number, currentY: number): number {
     // const pixelPhysicalFactor = 500 / 775 // pixels to mm factor
 
-    // // 70mm for 360 or 200 steps
-    // // 0.19mm per step
-    // const oneResolution = 200 / 70
-
-    // const currentDiagonalInPixels = Math.sqrt(Math.pow(previousX, 2) + Math.pow(previousY, 2))
-
-    // const targetDiagonalInPixels = Math.sqrt(Math.pow(targetX, 2) + Math.pow(targetY, 2))
-
-    // const physicalDiag = (currentDiagonalInPixels - targetDiagonalInPixels) * pixelPhysicalFactor
-
-    // const motorSteps = physicalDiag * oneResolution
-
-    // // const coeff = 6.44
-    // // const divisor = 0.3
-    // // const numerator = Math.sqrt(Math.pow(inputX - 50, 2) + Math.pow(inputY, 2))
-    // // const result = (numerator * coeff) / divisor
-
-    // return motorSteps
-
-    const pixelPhysicalFactor = 1
+    // because our width is 745
 
     // 70mm for 360 or 200 steps
     // 0.19mm per step
@@ -136,20 +79,11 @@ const sketch = (p: p5): void => {
     const oneResolution = 200 / 58.87
 
     const targetDiagonalInPixel = Math.sqrt(Math.pow(m2Posx - currentX, 2) + Math.pow(currentY, 2))
-    const delta = targetDiagonalInPixel - previousDiagonalInPixelM2
+    const physicalDiag = targetDiagonalInPixel - previousDiagonalInPixelM2
 
     previousDiagonalInPixelM2 = targetDiagonalInPixel
-    // const targetDiagonalInPixels = Math.sqrt(Math.pow(targetX, 2) + Math.pow(targetY, 2))
 
-    const physicalDiag = pixelPhysicalFactor * delta
-    // const physicalDiag = (currentDiagonalInPixels - targetDiagonalInPixels) * pixelPhysicalFactor
-
-    const motorSteps = physicalDiag * oneResolution
-
-    // const coeff = 6.44
-    // const divisor = 0.3
-    // const numerator = Math.sqrt(Math.pow(inputX - 50, 2) + Math.pow(inputY, 2))
-    // const result = (numerator * coeff) / divisor
+    const motorSteps = physicalDiag * oneResolution * microSteps
 
     return motorSteps
   }
@@ -160,12 +94,6 @@ const sketch = (p: p5): void => {
   }
 
   p.setup = (): void => {
-    const parentElement = document.getElementById('canvas-parent')
-    // if (parentElement) {
-    //   p.createCanvas(parentElement.offsetWidth, parentElement.offsetHeight)
-    // } else {
-    //   p.createCanvas(800, 1000) // Fallback size
-    // }
     const canvas = p.createCanvas(1000, 1000)
     // canvas.addClass('border-2 border-black border-solid')
 
@@ -268,8 +196,8 @@ const sketch = (p: p5): void => {
     // p.line(firstRectX2 + motorSize / 2, rectY + motorSize / 2, centerX, centerY)
     // this is for the lines from the motors
 
-    p.line(50 + motorSize / 2, rectY + motorSize / 2, circleCenterX, circleCenterY)
-    p.line(500 + 50 - motorSize / 2, rectY + motorSize / 2, circleCenterX, circleCenterY)
+    // p.line(50 + motorSize / 2, rectY + motorSize / 2, circleCenterX, circleCenterY)
+    // p.line(500 + 50 - motorSize / 2, rectY + motorSize / 2, circleCenterX, circleCenterY)
 
     // Playback logic
     if (isPlayingBack && playbackIndex < movements.length) {
@@ -323,27 +251,21 @@ const sketch = (p: p5): void => {
       // const motor1DiagInPixels = Math.sqrt(Math.pow(p.mouseX, 2) + Math.pow(p.mouseY, 2))
 
       const motor1 = calculateM1(p.mouseX, p.mouseY)
+      // const motor1 = 200
       const motor2 = calculateM2(p.mouseX, p.mouseY)
-      // const motor1 = 322
-      // const motor2 = 0
 
-      // const motor1 = -400
-      // const motor2 = -400
-
-      // const motor2 = calculateM1(p.mouseX, p.mouseY)
-      // console.log('motor1DiagInPixels', motor1DiagInPixels)
       console.log('motor1', motor1)
       console.log('motor2', motor2)
       console.log('mouseX', p.mouseX)
       console.log('mouseY', p.mouseY)
-
       window.electron.ipcRenderer.send('/step/1', motor1.toFixed(0).toString())
       window.electron.ipcRenderer.send('/step/2', motor2.toFixed(0).toString())
 
+      // window.electron.ipcRenderer.send('/step/3', motor1.toFixed(0).toString())
+      // window.electron.ipcRenderer.send('/step/4', motor2.toFixed(0).toString())
+
       circleCenterX = p.mouseX
       circleCenterY = p.mouseY
-      previousX = p.mouseX
-      previousY = p.mouseY
 
       movements = [] // Clear previous movements
       recordMovement()
