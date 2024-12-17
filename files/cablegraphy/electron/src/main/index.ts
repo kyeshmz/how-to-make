@@ -8,7 +8,9 @@ const oscServer = new Server(3333, '0.0.0.0', () => {
   console.log('OSC Server is listening')
 })
 
-const oscClient = new Client('192.168.41.205', 54321)
+const oscClient = new Client('192.168.8.191', 54321)
+// for a
+const oscClient2 = new Client('192.168.8.229', 54321)
 
 function createWindow(): void {
   oscServer.on('listening', () => {
@@ -23,25 +25,37 @@ function createWindow(): void {
   ipcMain.on('/step/1', (event, mouseX) => {
     console.log('/step/1', mouseX)
     const message = new Message('/step/1', mouseX)
-    oscClient.send(message, () => {})
+    oscClient2.send(message, () => {})
   })
 
   ipcMain.on('/step/2', (event, mouseX) => {
     console.log('/step/2', mouseX)
 
     const message = new Message('/step/2', mouseX)
-    oscClient.send(message, () => {})
+    oscClient2.send(message, () => {})
   })
 
   ipcMain.on('/step/3', (event, mouseX) => {
     console.log('/step/3', mouseX)
 
     const message = new Message('/step/3', mouseX)
-    oscClient.send(message, () => {})
+    oscClient2.send(message, () => {})
   })
 
   ipcMain.on('/step/4', (event, mouseX) => {
     console.log('/step/4', mouseX)
+
+    const message = new Message('/step/4', mouseX)
+    oscClient2.send(message, () => {})
+  })
+  ipcMain.on('/step/5', (event, mouseX) => {
+    console.log('/step/5', mouseX)
+
+    const message = new Message('/step/3', mouseX)
+    oscClient.send(message, () => {})
+  })
+  ipcMain.on('/step/6', (event, mouseX) => {
+    console.log('/step/6', mouseX)
 
     const message = new Message('/step/4', mouseX)
     oscClient.send(message, () => {})
@@ -65,8 +79,8 @@ function createWindow(): void {
 
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 1280,
-    height: 720,
+    width: 1920,
+    height: 1080,
     show: false,
 
     autoHideMenuBar: true,
@@ -76,7 +90,7 @@ function createWindow(): void {
       sandbox: false
     }
   })
-  mainWindow.setAspectRatio(16 / 9)
+  // mainWindow.setAspectRatio(16 / 9)
 
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
