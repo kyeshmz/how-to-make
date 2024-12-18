@@ -23,6 +23,7 @@ import cad_2020 from '../images/final/cad_2020.jpg';
 import char from '../images/final/char.jpg';
 import devboard_11_27 from '../images/final/devboard_11_27.jpg';
 import draft_workbench from "../images/final/draft_workbench.jpg";
+import light from '../images/final/light.jpg';
 import module_drv8825_11_27 from '../images/final/module_drv8825_11_27.jpg';
 import module_drv8825_11_27_pcb from '../images/final/module_drv8825_11_27_pcb.jpg';
 import new_multiboard from '../images/final/new_multiboard.jpg';
@@ -346,18 +347,49 @@ It was basically doing a coordinate system that was relative, rather than more a
 
 
 
+Dec 16th
+
+
+It finally worked!
+
+I tried to glue some leds onto the circles to see if that would help make it light int he dark to make some letters and stuff in the dark.
+
+<OptimizedCover src={light} alt="light"  />
+
+Just in case, I tried to make a sine wave if things went wrong in the demo
+
+<CustomVideo src={"/sin.mp4"} />
+
+Dec 17th
+
+
+And the final presentation
+
+<CustomVideo src={"/final.mp4"} />
+
+
+
+
 
 
 
 
 - [ ] What does it do?
-It is a kinetic art robot to be able 
+It is a kinetic art robot to be able discs around with AI!
 
 - [ ] Who's done what beforehand?
+People like Madeline Gannon have made alot of stuff that involves choreography and kinetic art using wire robots. 
+
 - [ ] What sources did you use?
+I used alot of youtube as well as 
+
 - [ ] What did you design?
+I designed the housing for the stepper motors, the wire holders, the PCB, the metal discs for the robot,  the software to move the robot, the cutter to make the parts, etc.
+
+
 - [ ] What materials and components were used?
-The materials that I used were 
+
+The materials that I used were 3D printed parts
 
 
 - [ ] Where did they come from?
@@ -397,10 +429,15 @@ TMC2209 that I bought off of BigTreeTech did not work at all that I was expectin
 
 - [ ] How was it evaluated?
 
+It moved with out fail!
 
 
 - [ ] What are the implications?
-- [ ] Prepare a summary slide and a one minute video showing its conception, construction, and operation
+
+More could have been done to calculate when a certain distance of a disc was reached, we could get some kind of callback or feedback from the robot.
+This could make it so that we could optimally send next commands and make the robot move to the next location.
+
+
 - [ ] Your project should incorporate
 - - [ ] 2D and 3D design, 
 - - [ ] additive and subtractive fabrication processes
