@@ -21,7 +21,7 @@
     "@react-three/drei": "^9.114.0",
     "@react-three/fiber": "^8.17.10",
     "@rive-app/canvas-lite": "^2.23.4",
-    "astro": "^4.16.10",
+    "astro": "^5.0.0",
     "astro-embed": "^0.9.0",
     "astro-icon": "^1.1.2",
     "astro-relative-links": "^0.4.0",
