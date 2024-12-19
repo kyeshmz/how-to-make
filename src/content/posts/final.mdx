@@ -306,6 +306,7 @@ It was a good call to be able to fillet the parts of the extruded parts of the s
 
 <OptimizedCover src={cad_2020} alt="cad_2020"  />
 
+
 But DAMN MY STEPPER MOTORS ARE NOT WORKING with all of them connected, one at a time works and I DONT KNOW WHY
 
 
@@ -346,6 +347,124 @@ It was basically doing a coordinate system that was relative, rather than more a
 <OptimizedCover src={draft_workbench} alt="draft_workbench"  />
 
 
+Here is the code that I used to make the robot move
+
+
+```
+// #define ARDUINOOSC_DEBUGLOG_ENABLE
+#include <ArduinoOSCWiFi.h>
+#include "AccelStepper.h"
+
+// for accelstepper
+#define dirPin 23
+#define stepPin 16
+#define motorInterfaceType 1
+
+// Create a new instance of the AccelStepper class:
+AccelStepper stepper = AccelStepper(motorInterfaceType, stepPin, dirPin);
+
+const char* ssid = "MLDEV";
+const char* pwd = "Aysyw2ch?";
+
+const char* host = "192.168.41.200";
+const int recv_port = 54321;
+const int bind_port = 54345;
+const int send_port = 55555;
+const int publish_port = 54445;
+
+// Variable to track if the motor is running
+bool isRunning = false;
+int motorSpeed = 1000;  // Default speed
+
+void onLeft(const OscMessage& m) {
+    Serial.println("Received /left command");
+    isRunning = true;
+    motorSpeed = abs(motorSpeed);  // Ensure positive speed
+    if (isRunning) {
+        stepper.setSpeed(-motorSpeed);
+    }
+}
+
+void onRight(const OscMessage& m) {
+    Serial.println("Received /right command");
+    isRunning = true;
+    motorSpeed = abs(motorSpeed);  // Ensure positive speed
+    if (isRunning) {
+        stepper.setSpeed(motorSpeed);
+    }
+}
+
+void onStart(const OscMessage& m) {
+    Serial.println("Received /start command");
+    isRunning = true;
+    stepper.setSpeed(stepper.speed());  // Maintain current direction
+}
+
+void onStop(const OscMessage& m) {
+    Serial.println("Received /stop command");
+    isRunning = false;
+    stepper.setSpeed(0);  // Stop the motor by setting speed to zero
+}
+
+void onSpeed(const OscMessage& m) {
+    int newSpeed = m.arg<int>(0);  // Get the speed from the OSC message
+    Serial.print("Received /speed command: ");
+    Serial.println(newSpeed);
+
+    motorSpeed = abs(newSpeed);  // Update the motor speed, make sure it's positive
+    if (isRunning) {
+        // Set speed while maintaining current direction
+        stepper.setSpeed(stepper.speed() < 0 ? -motorSpeed : motorSpeed);
+    }
+}
+
+void setup() {
+    Serial.begin(115200);
+    delay(2000);
+
+#if defined(ESP_PLATFORM) || defined(ARDUINO_ARCH_RP2040)
+#ifdef ESP_PLATFORM
+    WiFi.disconnect(true, true);  // disable wifi, erase ap info
+#else
+    WiFi.disconnect(true);  // disable wifi
+#endif
+    delay(1000);
+    WiFi.mode(WIFI_STA);
+#endif
+
+    WiFi.begin(ssid, pwd);
+
+    while (WiFi.status() != WL_CONNECTED) {
+        Serial.print(".");
+        delay(500);
+    }
+
+    Serial.print("WiFi connected, IP = ");
+    Serial.println(WiFi.localIP());
+
+    // Subscribe to the OSC addresses for control
+    OscWiFi.subscribe(recv_port, "/left", onLeft);
+    OscWiFi.subscribe(recv_port, "/right", onRight);
+    OscWiFi.subscribe(recv_port, "/start", onStart);
+    OscWiFi.subscribe(recv_port, "/stop", onStop);
+    OscWiFi.subscribe(recv_port, "/speed", onSpeed);
+
+    // Set the maximum speed in steps per second
+    stepper.setMaxSpeed(5000);
+}
+
+void loop() {
+    // Continuously update OSC messages
+    OscWiFi.update();
+
+    // Run the motor at the current speed if running
+    if (isRunning) {
+        stepper.runSpeed();
+    }
+}
+```
+
+
 
 Dec 16th
 
@@ -363,27 +482,27 @@ Just in case, I tried to make a sine wave if things went wrong in the demo
 Dec 17th
 
 
-And the final presentation
+And the final presentation was a bit of a disaster, but I think I did a good job of explaining what I was trying to do and what I was doing. in hindsight, I should have made a better video, better presentation, and better documentation.
 
 <CustomVideo src={"/final.mp4"} />
 
 
 
 
-
-
-
-
 - [ ] What does it do?
+
 It is a kinetic art robot to be able discs around with AI!
 
 - [ ] Who's done what beforehand?
+
 People like Madeline Gannon have made alot of stuff that involves choreography and kinetic art using wire robots. 
 
 - [ ] What sources did you use?
+
 I used alot of youtube as well as 
 
 - [ ] What did you design?
+
 I designed the housing for the stepper motors, the wire holders, the PCB, the metal discs for the robot,  the software to move the robot, the cutter to make the parts, etc.
 
 
@@ -394,8 +513,11 @@ The materials that I used were 3D printed parts
 
 - [ ] Where did they come from?
 
+They came from Amazon for some of the parts that I bought, CBA for some of the parts, Future Sketches for the extrusions, and some code from the internet.
+
 
 - [ ] How much did they cost?
+
 The DRV8825 were $20 for 10 of the pieces.
 The xiaos themselves cost around $5 dollars per piece. 
 The motors were from stepper motor online, 23HS21-0446S, and were $14.92 for 5.
@@ -407,7 +529,9 @@ The motors were from stepper motor online, 23HS21-0446S, and were $14.92 for 5.
 Spool holder, motor holder for the 2020 structures, cable holders, wire holder, PCB, CAD, software, firmware was made.
 
 
+
 - [ ] What tools and processes were used?
+
 For the PCB, I used Kicad to make the PCB.
 
 For the CAD, I used Fusion 360 to make the CAD.
@@ -418,9 +542,11 @@ For the software, I used Electron as well as P5JS and Tweakpane to make the soft
 For the firmware, I used the Arduino IDE to make the firmware for the ESP32 chip.
 
 - [ ] What questions were answered?
+
 I still wonder why my intial board that went over 2A wasnt working , as well as the TMC2209 that I bought off of BigTreeTech. 
 
 - [ ] What worked? What didn't?
+
 What worked?
 Interfacing with the DRV8825 and making it work with the xiao esp32c6 was very successful.
 
@@ -439,17 +565,19 @@ This could make it so that we could optimally send next commands and make the ro
 
 
 - [ ] Your project should incorporate
-- - [ ] 2D and 3D design, 
-- - [ ] additive and subtractive fabrication processes
-- - [ ] electronics design and production
+- - [x] 2D and 3D design, 
+- - [x] additive and subtractive fabrication processes
+- - [x] electronics design and production
 - - [x] embedded microcontroller design
 - - [x] interfacing
 - - [x] programming 
 - - [x] system integration
-- - [ ] packaging
-- [ ] Where possible, you should make rather than buy the parts of your project
-- [ ] Projects can be separate or joint, but need to show individual mastery of the skills, and be independently operable
-- [ ] Present your final project, weekly and group assignments, and documentation
+- - [x] packaging
+- [x] Where possible, you should make rather than buy the parts of your project
+- [x] Projects can be separate or joint, but need to show individual mastery of the skills, and be independently operable
+- [x] Present your final project, weekly and group assignments, and documentation
 
 
 
+
+Finally, all the files that I used can be found here.
