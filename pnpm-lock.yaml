@@ -46,7 +46,7 @@ importers:
         version: 1.1.2
       astro-relative-links:
         specifier: ^0.4.0
-        version: 0.4.0(astro@5.0.9(@types/node@22.9.0)(jiti@1.21.6)(rollup@4.24.0)(typescript@5.6.3)(yaml@2.5.1))
+        version: 0.4.2(astro@5.0.9(@types/node@22.9.0)(jiti@1.21.6)(rollup@4.24.0)(typescript@5.6.3)(yaml@2.5.1))
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -1207,10 +1207,10 @@ packages:
   astro-icon@1.1.2:
     resolution: {integrity: sha512-2qAHBtZLYuFEIMP0Ck0edyLi5fQmJjwP2Qbv41f8L4KAJ2sra/dH7q5lCOn4q0DHVtS0w3tPG8UKQRits3UPcg==}
 
-  astro-relative-links@0.4.0:
-    resolution: {integrity: sha512-pqeWeID9btm0LShMTIGOhpCzBnchLnZYmcsiS4Z96IxwRVsuyTNQkAcFpT8VvRVH2rao/nwALqrcTcZAHsdQNA==}
+  astro-relative-links@0.4.2:
+    resolution: {integrity: sha512-YXwnmZz47yxiIIxWR10LwpGlqvGTERJ7JWX2lFRINTg/sFaPkqTx9xNM50W1+9FNMMxtTn7C8YNW5yDVX33Vzw==}
     peerDependencies:
-      astro: ^3.0.0 || ^4.0.0
+      astro: '>=3.0.0'
 
   astro@5.0.9:
     resolution: {integrity: sha512-6jRMPSB+V82y/l8XOylPYJz78ux268nNNV2SLRvUaT4faf18rvIFAR33Y25wTM0Oeukcv1951xFuFsmAkQc+jg==}
@@ -1403,6 +1403,10 @@ packages:
 
   cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
+    engines: {node: '>= 8'}
+
+  cross-spawn@7.0.6:
+    resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
 
   css-select@5.1.0:
@@ -1663,8 +1667,8 @@ packages:
       debug:
         optional: true
 
-  foreground-child@3.2.1:
-    resolution: {integrity: sha512-PXUUyLqrR2XCWICfv6ukppP96sdFwWbNEnfEMt7jNsISjMsvaLNinAHNDYyvkyU+SZG2BTSbT5NjG+vZslfGTA==}
+  foreground-child@3.3.0:
+    resolution: {integrity: sha512-Ld2g8rrAyMYFXBhEqMz8ZAHBi4J4uS1i/CxGMDnjyFWddMXLVcDp051DZfu+t7+ab7Wv6SMqpWmyFIj5UbfFvg==}
     engines: {node: '>=14'}
 
   form-data@4.0.1:
@@ -2314,8 +2318,8 @@ packages:
     resolution: {integrity: sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==}
     engines: {node: '>=6'}
 
-  package-json-from-dist@1.0.0:
-    resolution: {integrity: sha512-dATvCeZN/8wQsGywez1mzHtTlP22H8OEfPrVMLNr4/eGa+ijtLn/6M5f0dY8UKNrC2O9UCU6SSoG3qRKnt7STw==}
+  package-json-from-dist@1.0.1:
+    resolution: {integrity: sha512-UEZIS3/by4OC8vL3P2dTXRETpebLI2NiI5vIrjaD/5UtrkFX/tNbwjTSRAGC/+7CAo2pIcBaRgWmcBBHcsaCIw==}
 
   package-manager-detector@0.2.2:
     resolution: {integrity: sha512-VgXbyrSNsml4eHWIvxxG/nTL4wgybMTXCV2Un/+yEc3aDKKU6nQBZjbeP3Pl3qm9Qg92X/1ng4ffvCeD/zwHgg==}
@@ -4487,7 +4491,7 @@ snapshots:
       - debug
       - supports-color
 
-  astro-relative-links@0.4.0(astro@5.0.9(@types/node@22.9.0)(jiti@1.21.6)(rollup@4.24.0)(typescript@5.6.3)(yaml@2.5.1)):
+  astro-relative-links@0.4.2(astro@5.0.9(@types/node@22.9.0)(jiti@1.21.6)(rollup@4.24.0)(typescript@5.6.3)(yaml@2.5.1)):
     dependencies:
       astro: 5.0.9(@types/node@22.9.0)(jiti@1.21.6)(rollup@4.24.0)(typescript@5.6.3)(yaml@2.5.1)
       glob: 10.4.5
@@ -4759,6 +4763,12 @@ snapshots:
       cross-spawn: 7.0.3
 
   cross-spawn@7.0.3:
+    dependencies:
+      path-key: 3.1.1
+      shebang-command: 2.0.0
+      which: 2.0.2
+
+  cross-spawn@7.0.6:
     dependencies:
       path-key: 3.1.1
       shebang-command: 2.0.0
@@ -5054,9 +5064,9 @@ snapshots:
 
   follow-redirects@1.15.9: {}
 
-  foreground-child@3.2.1:
+  foreground-child@3.3.0:
     dependencies:
-      cross-spawn: 7.0.3
+      cross-spawn: 7.0.6
       signal-exit: 4.1.0
 
   form-data@4.0.1:
@@ -5105,11 +5115,11 @@ snapshots:
 
   glob@10.4.5:
     dependencies:
-      foreground-child: 3.2.1
+      foreground-child: 3.3.0
       jackspeak: 3.4.3
       minimatch: 9.0.5
       minipass: 7.1.2
-      package-json-from-dist: 1.0.0
+      package-json-from-dist: 1.0.1
       path-scurry: 1.11.1
 
   globals@11.12.0: {}
@@ -6003,7 +6013,7 @@ snapshots:
 
   p-try@2.2.0: {}
 
-  package-json-from-dist@1.0.0: {}
+  package-json-from-dist@1.0.1: {}
 
   package-manager-detector@0.2.2: {}
 
