@@ -43,10 +43,10 @@ importers:
         version: 0.9.0(astro@5.0.9(@types/node@22.9.0)(jiti@1.21.6)(rollup@4.24.0)(typescript@5.6.3)(yaml@2.5.1))
       astro-icon:
         specifier: ^1.1.2
-        version: 1.1.2
+        version: 1.1.2(debug@4.3.7)
       astro-relative-links:
         specifier: ^0.4.0
-        version: 0.4.0(astro@5.0.9(@types/node@22.9.0)(jiti@1.21.6)(rollup@4.24.0)(typescript@5.6.3)(yaml@2.5.1))
+        version: 0.4.2(astro@5.0.9(@types/node@22.9.0)(jiti@1.21.6)(rollup@4.24.0)(typescript@5.6.3)(yaml@2.5.1))
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -1207,10 +1207,10 @@ packages:
   astro-icon@1.1.2:
     resolution: {integrity: sha512-2qAHBtZLYuFEIMP0Ck0edyLi5fQmJjwP2Qbv41f8L4KAJ2sra/dH7q5lCOn4q0DHVtS0w3tPG8UKQRits3UPcg==}
 
-  astro-relative-links@0.4.0:
-    resolution: {integrity: sha512-pqeWeID9btm0LShMTIGOhpCzBnchLnZYmcsiS4Z96IxwRVsuyTNQkAcFpT8VvRVH2rao/nwALqrcTcZAHsdQNA==}
+  astro-relative-links@0.4.2:
+    resolution: {integrity: sha512-YXwnmZz47yxiIIxWR10LwpGlqvGTERJ7JWX2lFRINTg/sFaPkqTx9xNM50W1+9FNMMxtTn7C8YNW5yDVX33Vzw==}
     peerDependencies:
-      astro: ^3.0.0 || ^4.0.0
+      astro: '>=3.0.0'
 
   astro@5.0.9:
     resolution: {integrity: sha512-6jRMPSB+V82y/l8XOylPYJz78ux268nNNV2SLRvUaT4faf18rvIFAR33Y25wTM0Oeukcv1951xFuFsmAkQc+jg==}
@@ -3837,12 +3837,12 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify/tools@4.0.7':
+  '@iconify/tools@4.0.7(debug@4.3.7)':
     dependencies:
       '@iconify/types': 2.0.0
       '@iconify/utils': 2.1.33
       '@types/tar': 6.1.13
-      axios: 1.7.7
+      axios: 1.7.7(debug@4.3.7)
       cheerio: 1.0.0
       domhandler: 5.0.3
       extract-zip: 2.0.1
@@ -4478,16 +4478,16 @@ snapshots:
       '@astro-community/astro-embed-youtube': 0.5.5(astro@5.0.9(@types/node@22.9.0)(jiti@1.21.6)(rollup@4.24.0)(typescript@5.6.3)(yaml@2.5.1))
       astro: 5.0.9(@types/node@22.9.0)(jiti@1.21.6)(rollup@4.24.0)(typescript@5.6.3)(yaml@2.5.1)
 
-  astro-icon@1.1.2:
+  astro-icon@1.1.2(debug@4.3.7):
     dependencies:
-      '@iconify/tools': 4.0.7
+      '@iconify/tools': 4.0.7(debug@4.3.7)
       '@iconify/types': 2.0.0
       '@iconify/utils': 2.1.33
     transitivePeerDependencies:
       - debug
       - supports-color
 
-  astro-relative-links@0.4.0(astro@5.0.9(@types/node@22.9.0)(jiti@1.21.6)(rollup@4.24.0)(typescript@5.6.3)(yaml@2.5.1)):
+  astro-relative-links@0.4.2(astro@5.0.9(@types/node@22.9.0)(jiti@1.21.6)(rollup@4.24.0)(typescript@5.6.3)(yaml@2.5.1)):
     dependencies:
       astro: 5.0.9(@types/node@22.9.0)(jiti@1.21.6)(rollup@4.24.0)(typescript@5.6.3)(yaml@2.5.1)
       glob: 10.4.5
@@ -4584,9 +4584,9 @@ snapshots:
 
   await-lock@2.2.2: {}
 
-  axios@1.7.7:
+  axios@1.7.7(debug@4.3.7):
     dependencies:
-      follow-redirects: 1.15.9
+      follow-redirects: 1.15.9(debug@4.3.7)
       form-data: 4.0.1
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
@@ -5052,7 +5052,9 @@ snapshots:
 
   flattie@1.1.1: {}
 
-  follow-redirects@1.15.9: {}
+  follow-redirects@1.15.9(debug@4.3.7):
+    optionalDependencies:
+      debug: 4.3.7
 
   foreground-child@3.2.1:
     dependencies:
