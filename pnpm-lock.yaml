@@ -34,7 +34,7 @@ importers:
         version: 8.17.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.170.0)
       '@rive-app/canvas-lite':
         specifier: ^2.23.4
-        version: 2.23.4
+        version: 2.42.1
       astro:
         specifier: ^5.0.9
         version: 5.0.9(@types/node@22.9.0)(jiti@1.21.6)(rollup@4.24.0)(typescript@5.6.3)(yaml@2.5.1)
@@ -43,7 +43,7 @@ importers:
         version: 0.9.0(astro@5.0.9(@types/node@22.9.0)(jiti@1.21.6)(rollup@4.24.0)(typescript@5.6.3)(yaml@2.5.1))
       astro-icon:
         specifier: ^1.1.2
-        version: 1.1.2
+        version: 1.1.2(debug@4.3.7)
       astro-relative-links:
         specifier: ^0.4.0
         version: 0.4.0(astro@5.0.9(@types/node@22.9.0)(jiti@1.21.6)(rollup@4.24.0)(typescript@5.6.3)(yaml@2.5.1))
@@ -864,8 +864,8 @@ packages:
       react-native:
         optional: true
 
-  '@rive-app/canvas-lite@2.23.4':
-    resolution: {integrity: sha512-zkefQbqjCJw1t4KW1fGkPaTFu79vCx+6GO3MVHK1MPqdwjvRA1PNMg9iy2013Z1HEDO7RQgfC9JF1mbp1PX8hg==}
+  '@rive-app/canvas-lite@2.42.1':
+    resolution: {integrity: sha512-pBmcP4WJV0QY851H27LI4ncWnORo8BA9YhoOUb9lsD5rPdlCIMR3cMkE7VcZ0f8Km+tg64+96vrexnkRieJntw==}
 
   '@rollup/pluginutils@5.1.3':
     resolution: {integrity: sha512-Pnsb6f32CD2W3uCaLZIzDmeFyQ2b8UWMFI7xtwUezpcGBDVDW6y9XgAWIlARiGAo6eNF5FK5aQTr0LFyNyqq5A==}
@@ -3837,12 +3837,12 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify/tools@4.0.7':
+  '@iconify/tools@4.0.7(debug@4.3.7)':
     dependencies:
       '@iconify/types': 2.0.0
       '@iconify/utils': 2.1.33
       '@types/tar': 6.1.13
-      axios: 1.7.7
+      axios: 1.7.7(debug@4.3.7)
       cheerio: 1.0.0
       domhandler: 5.0.3
       extract-zip: 2.0.1
@@ -4113,7 +4113,7 @@ snapshots:
     optionalDependencies:
       react-dom: 18.3.1(react@18.3.1)
 
-  '@rive-app/canvas-lite@2.23.4': {}
+  '@rive-app/canvas-lite@2.42.1': {}
 
   '@rollup/pluginutils@5.1.3(rollup@4.24.0)':
     dependencies:
@@ -4478,9 +4478,9 @@ snapshots:
       '@astro-community/astro-embed-youtube': 0.5.5(astro@5.0.9(@types/node@22.9.0)(jiti@1.21.6)(rollup@4.24.0)(typescript@5.6.3)(yaml@2.5.1))
       astro: 5.0.9(@types/node@22.9.0)(jiti@1.21.6)(rollup@4.24.0)(typescript@5.6.3)(yaml@2.5.1)
 
-  astro-icon@1.1.2:
+  astro-icon@1.1.2(debug@4.3.7):
     dependencies:
-      '@iconify/tools': 4.0.7
+      '@iconify/tools': 4.0.7(debug@4.3.7)
       '@iconify/types': 2.0.0
       '@iconify/utils': 2.1.33
     transitivePeerDependencies:
@@ -4584,9 +4584,9 @@ snapshots:
 
   await-lock@2.2.2: {}
 
-  axios@1.7.7:
+  axios@1.7.7(debug@4.3.7):
     dependencies:
-      follow-redirects: 1.15.9
+      follow-redirects: 1.15.9(debug@4.3.7)
       form-data: 4.0.1
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
@@ -5052,7 +5052,9 @@ snapshots:
 
   flattie@1.1.1: {}
 
-  follow-redirects@1.15.9: {}
+  follow-redirects@1.15.9(debug@4.3.7):
+    optionalDependencies:
+      debug: 4.3.7
 
   foreground-child@3.2.1:
     dependencies:
